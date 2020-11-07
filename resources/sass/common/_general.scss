@@ -47,8 +47,21 @@ span {
         min-height: 100vh;
         transition: all 0.3s;
 
-        @include media("<sm") {
+        @include media("<=sm") {
             padding: 15px 2px;
         }
+    }
+}
+
+#mobile-header {
+    display: none;
+
+    @include media("<=sm") {
+        display: block;
+        width: 124px;
+        position: absolute;
+        z-index: 2;
+        left: calc(50% - 62px);
+        top: 22px;
     }
 }
