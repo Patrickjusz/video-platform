@@ -288,9 +288,24 @@ span {
   transition: all 0.3s;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .wrapper #content {
     padding: 15px 2px;
+  }
+}
+
+#mobile-header {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #mobile-header {
+    display: block;
+    width: 124px;
+    position: absolute;
+    z-index: 2;
+    left: calc(50% - 62px);
+    top: 22px;
   }
 }
 
@@ -308,7 +323,7 @@ span {
     display: block;
     position: absolute;
     top: 10px;
-    z-index: 999px;
+    z-index: 999;
   }
 }
 
