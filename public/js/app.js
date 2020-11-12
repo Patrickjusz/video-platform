@@ -130,6 +130,12 @@ $(function () {
     }
   });
 });
+videojs("my_video_1", {
+  fluid: true,
+  controlBar: {
+    children: ["playToggle", "volumeMenuButton", "durationDisplay", "timeDivider", "currentTimeDisplay", "progressControl", "remainingTimeDisplay", "fullscreenToggle"]
+  }
+});
 
 /***/ }),
 
