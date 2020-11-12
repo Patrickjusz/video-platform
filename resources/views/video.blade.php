@@ -18,7 +18,7 @@
     <div class="col-lg-8 col-sm-12" style="background-color: #fff;">
         <video id="my_video_1" class="video-js vjs-default-skin  vjs-big-play-centered" controls preload="metadata"
             poster="thumb.jpg" width="640" height="268">
-            <source src="fb.mp4" type='video/mp4'>
+            <source src="wideos/fb.mp4" type='video/mp4'>
         </video>
         <h1 class="title">Jak włamać się do routera?</h1>
 
