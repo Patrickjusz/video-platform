@@ -372,3 +372,23 @@ span {
   font-size: 1rem;
 }
 
+.video-container #tags {
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .video-container #tags {
+    font-size: 10px;
+  }
+}
+
+.video-container #similar-videos .video {
+  margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  .video-container #similar-videos {
+    margin-top: 30px;
+  }
+}
+

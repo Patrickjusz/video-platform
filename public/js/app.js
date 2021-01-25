@@ -119,7 +119,7 @@ $(function () {
     }
   });
   AOS.init();
-  $(window).on("resize", function () {
+  $(window).on("load resize", function () {
     if ($(this).width() >= 768) {
       $($mobileHeader).hide();
       $($sidebar).addClass("active");
@@ -130,7 +130,7 @@ $(function () {
     }
   });
 });
-videojs("my_video_1", {
+videojs("main-video", {
   fluid: true,
   controlBar: {
     children: ["playToggle", "volumeMenuButton", "durationDisplay", "timeDivider", "currentTimeDisplay", "progressControl", "remainingTimeDisplay", "fullscreenToggle"]

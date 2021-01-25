@@ -8,6 +8,24 @@
 
     .description {
         margin-top: 20px;
-        font-size: 1.0rem;
+        font-size: 1rem;
+    }
+
+    #tags {
+        margin-top: 10px;
+
+        @include media("<=sm") {
+            font-size: 10px;
+        }
+    }
+
+    #similar-videos {
+        .video {
+            margin-bottom: 16px;
+        }
+
+        @include media("<=sm") {
+            margin-top: 30px;
+        }
     }
 }
