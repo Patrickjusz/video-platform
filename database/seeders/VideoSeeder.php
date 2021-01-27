@@ -20,16 +20,17 @@ class VideoSeeder extends Seeder
     public function run()
     {
         $tags = ['#haker', '#xss', '#sql', '#css', '#lfi', '#linux'];
+        $state = ['active', 'active', 'inactive', 'delete'];
         foreach (range(0, 30) as $i) {
             DB::table('videos')->insert([
                 'created_at' => Carbon::now(),
                 'name' => Str::random(100),
                 'filename' => Str::random(16) . '.mp4',
                 'imagename' => Str::random(16) . '.jpg',
-                'tags' => $tags[array_rand($tags , 1)].$tags[array_rand($tags , 1)],
+                'tags' => $tags[array_rand($tags, 1)] . $tags[array_rand($tags, 1)],
                 'slug' => (Str::random(3) . '-' . Str::random(7) . '-' . Str::random(9)),
                 'views' => random_int(0, 99999),
-                'state' => 'active',
+                'state' => $state[array_rand($state, 1)],
             ]);
         }
     }
