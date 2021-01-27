@@ -18,7 +18,9 @@ $(function() {
         }
     });
 
-    AOS.init();
+    if (typeof AOS !== "undefined") {
+        AOS.init();
+    }
 
     $(window).on("load resize", function() {
         if ($(this).width() >= 768) {
@@ -32,18 +34,20 @@ $(function() {
     });
 });
 
-videojs("main-video", {
-    fluid: true,
-    controlBar: {
-        children: [
-            "playToggle",
-            "volumeMenuButton",
-            "durationDisplay",
-            "timeDivider",
-            "currentTimeDisplay",
-            "progressControl",
-            "remainingTimeDisplay",
-            "fullscreenToggle"
-        ]
-    }
-});
+if (typeof videojs !== "undefined") {
+    videojs("main-video", {
+        fluid: true,
+        controlBar: {
+            children: [
+                "playToggle",
+                "volumeMenuButton",
+                "durationDisplay",
+                "timeDivider",
+                "currentTimeDisplay",
+                "progressControl",
+                "remainingTimeDisplay",
+                "fullscreenToggle"
+            ]
+        }
+    });
+}

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,14 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('homepage');
-// });
+// DASHBOARD
+Auth::routes(['register' => false]);
+Auth::routes();
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
 
-
-Route::get('/wideo', function () {
-    return view('video');
-});
-
-
+// FRONTEND
 Route::get('/', [HomepageController::class, 'index']);
+Route::get('/{slug}', [VideoController::class, 'index'])
+    ->where('slug', '[A-Za-z0-9\-]+');
