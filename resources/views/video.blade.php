@@ -39,13 +39,11 @@
         </div>
 
         <div class="col-lg-4 col-sm-12" id="similar-videos">
-
-
             @forelse ($video->getSimilarVideos(7) as $similarVideo)
                 <a class="row video" href="{{ $similarVideo->slug }}">
                     <div class="col-5"
                         style=" min-height: 90px; background-image: url('{{ THUMB_PATH }}/{{ $similarVideo->thumb }}'); background-repeat: no-repeat; background-size: cover;">
-
+                        <div class="duration">{{ $similarVideo->getDuration() }}</div>
                     </div>
                     <div class="col-7">
                         <b>{{ Str::limit($similarVideo->name, 20) }}</b><br>

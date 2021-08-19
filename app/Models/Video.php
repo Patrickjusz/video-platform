@@ -4,8 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use DB;
-use App\Models\Tag;
+use getID3;
 
 class Video extends Model
 {
@@ -15,6 +14,7 @@ class Video extends Model
     {
         return $this->belongsToMany('App\Models\Tag')->withTimestamps();
     }
+
 
     // TODO 
     public function getSimilarVideos(int $limit = 10)
@@ -44,5 +44,20 @@ class Video extends Model
 
 
         return Video::inRandomOrder()->where('state', 'active')->limit($limit)->get();
+    }
+
+
+    private function getDetails(string $videoPath)
+    {
+        $getID3 = new getID3;
+        $fileInfo = $getID3->analyze($videoPath);
+
+        return $fileInfo;
+    }
+
+
+    public function getDuration()
+    {
+        return ($this->getDetails(VIDEO_PATH . '/' . $this->filename)['playtime_string']) ?? '';
     }
 }

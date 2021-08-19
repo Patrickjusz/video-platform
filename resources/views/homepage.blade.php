@@ -14,6 +14,7 @@
             @if (isset($video->slug))
                 <a href="{{ $video->slug }}" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 video-box">
                     <img class="img" src="{{ THUMB_PATH }}/{{ $video->thumb }}" alt="{{ $video->name }}" />
+                    <div class="duration">{{ $video->getDuration() }}</div>
                     <div class="description">
                         <div class="title">{{ Str::limit($video->name, 23) }}</div>
                         <div class="stats">
