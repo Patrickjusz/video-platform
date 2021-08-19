@@ -68,12 +68,20 @@ if (!function_exists('timeElapsedString')) {
         $diff->w = floor($diff->d / 7);
         $diff->d -= $diff->w * 7;
 
+        // $singleForm = [
+        //     'y' => 'lat',
+        //     'm' => 'miesiąc',
+        //     'w' => 'tydzień',
+        //     'd' => 'dzień'
+        // ];
+
         $string = [
             'y' => 'lata',
             'm' => 'miesiące',
-            'w' => 'tydzień',
+            'w' => 'tygodnie',
             'd' => 'dni'
         ];
+
         foreach ($string as $k => &$v) {
             if ($diff->$k) {
                 $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? '' : '');
@@ -81,6 +89,7 @@ if (!function_exists('timeElapsedString')) {
                 unset($string[$k]);
             }
         }
+
 
         if (!$full) $string = array_slice($string, 0, 1);
         return $string ? implode(', ', $string) . ' temu' : 'dzisiaj';

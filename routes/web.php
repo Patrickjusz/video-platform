@@ -25,3 +25,7 @@ Route::get('/', [HomepageController::class, 'index'])->name('video.index');
 Route::get('/popularne', [HomepageController::class, 'popular'])->name('video.popular');
 Route::get('/{slug}', [VideoController::class, 'index'])
     ->where('slug', '[A-Za-z0-9\-]+');
+
+
+
+Route::get('/kategoria/{slug}', [HomepageController::class, 'category'])->name('video.category');
