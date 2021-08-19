@@ -21,6 +21,7 @@ Auth::routes();
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
 
 // FRONTEND
-Route::get('/', [HomepageController::class, 'index']);
+Route::get('/', [HomepageController::class, 'index'])->name('video.index');
+Route::get('/popularne', [HomepageController::class, 'popular'])->name('video.popular');
 Route::get('/{slug}', [VideoController::class, 'index'])
     ->where('slug', '[A-Za-z0-9\-]+');

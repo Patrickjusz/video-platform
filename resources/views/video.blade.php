@@ -23,8 +23,8 @@
             <h1 class="title">{{ $video->name }}</h1>
 
             {{-- <div class="stats">{{ $video->views }} wyświetleń • 24 sty 2021 </div> --}}
-            <div class="stats">{{ $video->views }} wyświetleń •
-                {{ convertToPolishMonth($video->created_at->format('d M Y')) }} </div>
+            <div class="stats">{{ shortNumberFormat($video->views) }} wyświetleń •
+                {{ timeElapsedString($video->created_at) }} </div>
 
             <div class="description">
                 {{-- <img style="float:left; margin:5px; margin-right: 15px;"
