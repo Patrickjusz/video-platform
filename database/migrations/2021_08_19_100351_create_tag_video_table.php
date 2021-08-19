@@ -29,6 +29,6 @@ class CreateTagVideoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('video_tag');
+        Schema::dropIfExists('tag_video');
     }
 }
