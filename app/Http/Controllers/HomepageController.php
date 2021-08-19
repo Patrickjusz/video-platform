@@ -9,7 +9,7 @@ class HomepageController extends Controller
 {
     public function index()
     {
-        $videos = Video::where('state', 'active')->orderBy('created_at')->get();
+        $videos = Video::where('state', 'active')->orderByDesc('created_at')->get();
 
         return view('homepage', ['videos' => $videos]);
     }
