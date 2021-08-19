@@ -23,9 +23,9 @@ class VideoSeeder extends Seeder
         $state = ['active', 'active', 'inactive', 'delete'];
         $description = simplexml_load_file('http://www.lipsum.com/feed/xml?amount=1&what=paras&start=' . RAND(1, 100))->lipsum;
 
-        foreach (range(0, 30) as $i) {
+        foreach (range(0, 60) as $i) {
             DB::table('videos')->insert([
-                'created_at' => Carbon::now(),
+                'created_at' => Carbon::today()->subDays(rand(0, 865)),
                 'name' => Str::random(40),
                 'filename' => Str::random(16) . '.mp4',
                 'thumb' => Str::random(16) . '.jpg',
