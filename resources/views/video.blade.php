@@ -1,4 +1,4 @@
-@section('page_title', 'Wideo Haker')
+@section('page_title', $video->name)
 
 @extends('layouts.app')
 @extends('layouts.head')
@@ -6,19 +6,16 @@
 @extends('layouts.sidebar')
 @extends('layouts.footer')
 
-<link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
-
-<!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
-<script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
-<script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
+<link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+<script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
 
 
 @section('content')
     <div class="row video-container">
         <div class="col-lg-8 col-sm-12" style="background-color: #fff;">
             <video id="main-video" class="video-js vjs-default-skin  vjs-big-play-centered" controls preload="metadata"
-                poster="thumb.jpg" width="640" height="268">
-                <source src="upload/videos/sample.mp4" type='video/mp4'>
+                poster="{{ THUMB_PATH }}/{{ $video->thumb }}" width="640" height="268">
+                <source src="{{ VIDEO_PATH }}/{{ $video->filename }}" type='video/mp4'>
             </video>
             <h1 class="title">{{ $video->name }}</h1>
 
@@ -43,90 +40,22 @@
 
         <div class="col-lg-4 col-sm-12" id="similar-videos">
 
-            <a class="row video" href="#adam">
-                <div class="col-5"
-                    style=" min-height: 90px; background-image: url('https://gfx.wiadomosci.radiozet.pl/var/radiozetwiadomosci/storage/images/swiat/wyciekly-dane-235-mln-uzytkownikow-instagrama-tiktoka-i-youtube-a/8128549-1-pol-PL/Wyciekly-dane-235-mln-uzytkownikow-Instagrama-TikToka-i-YouTube-a_article.jpg'); background-repeat: no-repeat; background-size: cover;">
 
-                </div>
-                <div class="col-7">
-                    <b>Jak zostać hakerem?</b><br>
-                    2.7 tys. wyświetleń<br>
-                    Dodano 6 dni temu
-                </div>
-            </a>
+            @forelse ($video->getSimilarVideos(7) as $similarVideo)
+                <a class="row video" href="{{ $similarVideo->slug }}">
+                    <div class="col-5"
+                        style=" min-height: 90px; background-image: url('{{ THUMB_PATH }}/{{ $similarVideo->thumb }}'); background-repeat: no-repeat; background-size: cover;">
 
-            <a class="row video" href="#adam">
-                <div class="col-5"
-                    style=" min-height: 90px; background-image: url('https://gfx.wiadomosci.radiozet.pl/var/radiozetwiadomosci/storage/images/swiat/wyciekly-dane-235-mln-uzytkownikow-instagrama-tiktoka-i-youtube-a/8128549-1-pol-PL/Wyciekly-dane-235-mln-uzytkownikow-Instagrama-TikToka-i-YouTube-a_article.jpg'); background-repeat: no-repeat; background-size: cover;">
-
-                </div>
-                <div class="col-7">
-                    <b>Jak zostać hakerem?</b><br>
-                    2.7 tys. wyświetleń<br>
-                    Dodano 6 dni temu
-                </div>
-            </a>
-
-            <a class="row video" href="#adam">
-                <div class="col-5"
-                    style=" min-height: 90px; background-image: url('https://gfx.wiadomosci.radiozet.pl/var/radiozetwiadomosci/storage/images/swiat/wyciekly-dane-235-mln-uzytkownikow-instagrama-tiktoka-i-youtube-a/8128549-1-pol-PL/Wyciekly-dane-235-mln-uzytkownikow-Instagrama-TikToka-i-YouTube-a_article.jpg'); background-repeat: no-repeat; background-size: cover;">
-
-                </div>
-                <div class="col-7">
-                    <b>Jak zostać hakerem?</b><br>
-                    2.7 tys. wyświetleń<br>
-                    Dodano 6 dni temu
-                </div>
-            </a>
-
-            <a class="row video" href="#adam">
-                <div class="col-5"
-                    style=" min-height: 90px; background-image: url('https://gfx.wiadomosci.radiozet.pl/var/radiozetwiadomosci/storage/images/swiat/wyciekly-dane-235-mln-uzytkownikow-instagrama-tiktoka-i-youtube-a/8128549-1-pol-PL/Wyciekly-dane-235-mln-uzytkownikow-Instagrama-TikToka-i-YouTube-a_article.jpg'); background-repeat: no-repeat; background-size: cover;">
-
-                </div>
-                <div class="col-7">
-                    <b>Jak zostać hakerem?</b><br>
-                    2.7 tys. wyświetleń<br>
-                    Dodano 6 dni temu
-                </div>
-            </a>
-
-            <a class="row video" href="#adam">
-                <div class="col-5"
-                    style=" min-height: 90px; background-image: url('https://gfx.wiadomosci.radiozet.pl/var/radiozetwiadomosci/storage/images/swiat/wyciekly-dane-235-mln-uzytkownikow-instagrama-tiktoka-i-youtube-a/8128549-1-pol-PL/Wyciekly-dane-235-mln-uzytkownikow-Instagrama-TikToka-i-YouTube-a_article.jpg'); background-repeat: no-repeat; background-size: cover;">
-
-                </div>
-                <div class="col-7">
-                    <b>Jak zostać hakerem?</b><br>
-                    2.7 tys. wyświetleń<br>
-                    Dodano 6 dni temu
-                </div>
-            </a>
-
-            <a class="row video" href="#adam">
-                <div class="col-5"
-                    style=" min-height: 90px; background-image: url('https://gfx.wiadomosci.radiozet.pl/var/radiozetwiadomosci/storage/images/swiat/wyciekly-dane-235-mln-uzytkownikow-instagrama-tiktoka-i-youtube-a/8128549-1-pol-PL/Wyciekly-dane-235-mln-uzytkownikow-Instagrama-TikToka-i-YouTube-a_article.jpg'); background-repeat: no-repeat; background-size: cover;">
-
-                </div>
-                <div class="col-7">
-                    <b>Jak zostać hakerem?</b><br>
-                    2.7 tys. wyświetleń<br>
-                    Dodano 6 dni temu
-                </div>
-            </a>
-
-            <a class="row video" href="#adam">
-                <div class="col-5"
-                    style=" min-height: 90px; background-image: url('https://gfx.wiadomosci.radiozet.pl/var/radiozetwiadomosci/storage/images/swiat/wyciekly-dane-235-mln-uzytkownikow-instagrama-tiktoka-i-youtube-a/8128549-1-pol-PL/Wyciekly-dane-235-mln-uzytkownikow-Instagrama-TikToka-i-YouTube-a_article.jpg'); background-repeat: no-repeat; background-size: cover;">
-
-                </div>
-                <div class="col-7">
-                    <b>Jak zostać hakerem?</b><br>
-                    2.7 tys. wyświetleń<br>
-                    Dodano 6 dni temu
-                </div>
-            </a>
-
+                    </div>
+                    <div class="col-7">
+                        <b>{{ Str::limit($similarVideo->name, 20) }}</b><br>
+                        {{ shortNumberFormat($similarVideo->views) }} wyświetleń<br>
+                        Dodano {{ timeElapsedString($similarVideo->created_at) }}
+                    </div>
+                </a>
+            @empty
+                brak
+            @endforelse
 
         </div>
     </div>
