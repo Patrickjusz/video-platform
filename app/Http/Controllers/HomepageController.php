@@ -13,4 +13,11 @@ class HomepageController extends Controller
 
         return view('homepage', ['videos' => $videos]);
     }
+
+    public function popular()
+    {
+        $videos = Video::where('state', 'active')->orderByDesc('views')->get();
+
+        return view('homepage', ['videos' => $videos]);
+    }
 }

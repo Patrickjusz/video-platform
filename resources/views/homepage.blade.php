@@ -1,10 +1,10 @@
 @section('page_title', 'Wideo Haker')
 
-    @extends('layouts.app')
-    @extends('layouts.head')
-    @extends('layouts.search')
-    @extends('layouts.sidebar')
-    @extends('layouts.footer')
+@extends('layouts.app')
+@extends('layouts.head')
+@extends('layouts.search')
+@extends('layouts.sidebar')
+@extends('layouts.footer')
 
 @section('content')
     <div class="row video-wrapper" data-aos="zoom-out-up" data-aos-delay="50" data-aos-duration="500"
@@ -18,8 +18,8 @@
                         <div class="title">{{ Str::limit($video->name, 23) }}</div>
                         <div class="stats">
                             <div class="row">
-                                <div class="col-7 views">2,3tys wyświetleń</div>
-                                <div class="col-5 date">3 dni temu</div>
+                                <div class=" col-12 views">{{ shortNumberFormat($video->views) }} wyświetleń</div>
+                                <div class="col-12 date">Dodano {{ timeElapsedString($video->created_at) }}</div>
                             </div>
                         </div>
                     </div>
