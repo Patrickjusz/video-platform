@@ -28,7 +28,7 @@ class VideosSeeder extends Seeder
                 'filename' => $videos[array_rand($videos, 1)],
                 'thumb' => $thumb[array_rand($thumb, 1)],
                 'slug' => (Str::random(3) . '-' . Str::random(7) . '-' . Str::random(9)),
-                'views' => random_int(0, 99999),
+                'views' => random_int(0, 999999),
                 'state' => $state[array_rand($state, 1)],
                 'description' => $description
             ]);
