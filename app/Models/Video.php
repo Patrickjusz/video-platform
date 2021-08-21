@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use getID3;
+use Illuminate\Support\Facades\Storage;
 
 class Video extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'filename', 'thumb', 'views', 'slug', 'state', 'description', 'created_at'];
 
     public function tags()
     {
@@ -58,6 +61,6 @@ class Video extends Model
 
     public function getDuration()
     {
-        return ($this->getDetails(VIDEO_PATH . '/' . $this->filename)['playtime_string']) ?? '';
+        return ($this->getDetails('storage/' . $this->filename)['playtime_string']) ?? '';
     }
 }

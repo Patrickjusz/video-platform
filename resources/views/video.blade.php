@@ -14,8 +14,8 @@
     <div class="row video-container">
         <div class="col-lg-8 col-sm-12" style="background-color: #fff;">
             <video id="main-video" class="video-js vjs-default-skin  vjs-big-play-centered" controls preload="metadata"
-                poster="{{ THUMB_PATH }}/{{ $video->thumb }}" width="640" height="268">
-                <source src="{{ VIDEO_PATH }}/{{ $video->filename }}" type='video/mp4'>
+                poster="{{ Storage::url($video->thumb) }}" width="640" height="268">
+                <source src="{{ Storage::url($video->filename) }}" type='video/mp4'>
             </video>
             <h1 class="title">{{ $video->name }}</h1>
 
@@ -36,13 +36,20 @@
 
                 @endforelse
             </div>
+            @auth
+                <div>
+                    <br>
+                    <button class="btn btn-primary"
+                        onclick="window.location.href='{{ ADMIN_PANEL_EDIT_URL . $video->id }}'">Edytuj wideo</button>
+                </div>
+            @endauth
         </div>
 
         <div class="col-lg-4 col-sm-12" id="similar-videos">
             @forelse ($video->getSimilarVideos(7) as $similarVideo)
                 <a class="row video" href="{{ $similarVideo->slug }}">
                     <div class="col-5"
-                        style=" min-height: 90px; background-image: url('{{ THUMB_PATH }}/{{ $similarVideo->thumb }}'); background-repeat: no-repeat; background-size: cover;">
+                        style=" min-height: 90px; background-image: url('{{ Storage::url($similarVideo->thumb) }}'); background-repeat: no-repeat; background-size: cover;">
                         <div class="duration">{{ $similarVideo->getDuration() }}</div>
                     </div>
                     <div class="col-7">
