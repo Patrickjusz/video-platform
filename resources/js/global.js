@@ -35,7 +35,7 @@ $(function() {
 });
 
 if (typeof videojs !== "undefined") {
-    videojs("main-video", {
+    var player = videojs("main-video", {
         fluid: true,
         controlBar: {
             children: [
@@ -50,4 +50,12 @@ if (typeof videojs !== "undefined") {
             ]
         }
     });
+
+    // player.on("ended", function() {
+    //     alert(12);
+    // });
+
+    // player.on("play", function() {
+    //     alert(12);
+    // });
 }
