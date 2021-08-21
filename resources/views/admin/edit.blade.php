@@ -6,15 +6,24 @@
                 {!! Form::model($video, ['route' => ['admin.update', $video->id], 'method' => 'put', 'files' => true]) !!}
                 {!! Form::token() !!}
 
+                @isset($video)
+                    <video id="main-video" class="video-js vjs-default-skin  vjs-big-play-centered" controls preload="none"
+                        poster="{{ Storage::url($video->thumb) }}" width="640" height="268">
+                        <source src="{{ Storage::url($video->filename) }}" type='video/mp4'>
+                    </video>
+                @endisset
+
+                <hr>
+
                 <div class="form-group">
                     {!! Form::label('video_file', 'Film') !!}<br>
-                    {!! Form::file('video_file', ['accept' => '.mp4', 'required']) !!}
+                    {!! Form::file('video_file', ['accept' => '.mp4']) !!}
                     {{-- {!! $video->filename !!} --}}
                 </div>
 
                 <div class="form-group">
                     {!! Form::label('thumb_file', 'Miniaturka') !!}<br>
-                    {!! Form::file('thumb_file', ['accept' => '.jpg,.jpeg', 'required']) !!}
+                    {!! Form::file('thumb_file', ['accept' => '.jpg,.jpeg']) !!}
                     {{-- {!! $video->thumb !!} --}}
                 </div>
 

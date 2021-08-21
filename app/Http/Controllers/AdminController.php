@@ -85,32 +85,28 @@ class AdminController extends Controller
         $thumbFile = $request->file('thumb_file') ?? false;
         $toRemove = [];
 
-        if ($thumbFile && $videoFile) //@TODO change OR to AND 
-        {
-            !empty($video->thumb) ? $toRemove[] = $video->thumb : false;
-            !empty($video->filename) ? $toRemove[] = $video->filename : false;
-
-
-            $thumbNewPath =  $thumbFile->store('thumbs', 'public');
+        if (!empty($videoFile)) {
             $videoNewPath =  $videoFile->store('videos', 'public');
-
-            if ($thumbNewPath) {
-                $input['thumb'] = $thumbNewPath;
-            } else {
-                //blad wgrania miniatury
-            }
 
             if ($videoNewPath) {
                 $input['filename'] = $videoNewPath;
-            } else {
-                //blad wgrania wideo
             }
+
+            !empty($video->filename) ? $toRemove[] = $video->filename : false;
         }
 
+        if (!empty($thumbFile)) {
+            $thumbNewPath =  $thumbFile->store('thumbs', 'public');
 
-        $isUpdated = $video->update($input);
-        if ($isUpdated) {
-            foreach ($toRemove as $file) {    
+            if ($thumbNewPath) {
+                $input['thumb'] = $thumbNewPath;
+            }
+
+            !empty($video->thumb) ? $toRemove[] = $video->thumb : false;
+        }
+
+        if ($video->update($input)) {
+            foreach ($toRemove as $file) {
                 Storage::delete('public/' .  $file);
             }
         }
