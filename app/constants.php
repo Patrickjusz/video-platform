@@ -1,4 +1,4 @@
 <?php
 
-define('THUMB_PATH', 'upload/thumbs');
-define('VIDEO_PATH', 'upload/videos');
+define('ADMIN_PANEL_INDEX_URL', 'admin/');
+define('ADMIN_PANEL_EDIT_URL', 'edit/');
