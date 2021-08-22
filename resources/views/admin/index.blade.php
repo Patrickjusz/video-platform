@@ -3,6 +3,14 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12">
+
+                 @if (Session::has('status'))
+                    <div class="alert alert-success hide-3s">
+                        {{ Session::get('status') }}
+                    </div>
+                @endif
+
+
                 <table class="table table-bordered data-table-video">
                     <thead>
                         <tr>

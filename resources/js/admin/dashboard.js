@@ -23,4 +23,10 @@ $(function() {
             }
         ]
     });
+
+    if ($(".hide-3s").length) {
+        setTimeout(function() {
+            $(".hide-3s").hide(500);
+        }, 3000);
+    }
 });
