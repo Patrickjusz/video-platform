@@ -2,6 +2,17 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
+            <div class="div col-12">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </div>
             <div class="col-12">
                 {!! Form::model($video, ['route' => ['admin.update', $video->id], 'method' => 'put', 'files' => true]) !!}
                 {!! Form::token() !!}
