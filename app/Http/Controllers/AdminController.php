@@ -79,6 +79,15 @@ class AdminController extends Controller
      */
     public function update($id, Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'views' => 'required|integer',
+            'slug' => 'unique:videos,slug,' . $id . '|required',
+            'state' => 'required',
+            'description' => 'required',
+        ]);
+
+
         $video = Video::findOrFail($id);
         $input = $request->all();
         $videoFile = $request->file('video_file') ?? false;
