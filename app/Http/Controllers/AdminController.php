@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Video;
 use DataTables;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -118,6 +119,8 @@ class AdminController extends Controller
             foreach ($toRemove as $file) {
                 Storage::delete('public/' .  $file);
             }
+
+            Session::flash('status', 'Wideo zostało zaktualizowane');
         }
 
         return redirect()->route('admin.index');
