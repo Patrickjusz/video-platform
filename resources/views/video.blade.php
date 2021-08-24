@@ -1,4 +1,9 @@
 @section('page_title', $video->name)
+@section('page_description', substr($video->description, 0, 157) . '...')
+@section('page_keywords', 'haker')
+@section('og_image', Storage::url($video->thumb))
+@section('article_published_time', '1')
+@section('article_modified_time', '2')
 
 @extends('layouts.app')
 @extends('layouts.head')

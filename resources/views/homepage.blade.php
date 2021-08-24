@@ -1,4 +1,10 @@
 @section('page_title', 'Wideo Haker')
+@section('page_description', 'opis')
+@section('page_keywords', 'haker')
+@section('og_image', '')
+@section('article_published_time', '1')
+@section('article_modified_time', '2')
+
 
 @extends('layouts.app')
 @extends('layouts.head')
