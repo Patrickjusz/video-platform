@@ -2,8 +2,8 @@
 @section('page_description', 'opis')
 @section('page_keywords', 'haker')
 @section('og_image', '')
-@section('article_published_time', '1')
-@section('article_modified_time', '2')
+@section('article_published_time', $latest_video->created_at)
+@section('article_modified_time', $latest_video->updated_at ?? $latest_video->created_at)
 
 
 @extends('layouts.app')

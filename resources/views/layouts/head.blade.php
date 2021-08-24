@@ -3,6 +3,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index, follow">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="last-modified" content="@yield('article_modified_time')" />
+
+    {{-- http://help.dottoro.com/lhquobhe.php --}}
 
     <title>
         @yield('page_title') | haker.edu.pl
