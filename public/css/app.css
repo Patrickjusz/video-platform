@@ -401,6 +401,12 @@ span {
   margin-bottom: 16px;
 }
 
+.video-container #similar-videos .video .col-5 {
+  min-height: 90px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 @media (max-width: 768px) {
   .video-container #similar-videos {
     margin-top: 30px;
