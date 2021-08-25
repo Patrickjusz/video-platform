@@ -1,5 +1,8 @@
 .video-container {
     // display: none !important;
+    @include media("<=md") {
+        margin: 2px 2px;
+    }
 
     .title {
         margin-top: 20px;
@@ -24,14 +27,27 @@
             margin-bottom: 16px;
 
             .col-5 {
-                min-height: 90px;
+                min-height: 100px;
                 background-repeat: no-repeat;
                 background-size: cover;
+
+                @include media("<=md") {
+                    min-height: 190px;
+                }
+
+                @include media("<=sm") {
+                    min-height: 120px;
+                }
+
+                @include media("<=xs") {
+                    min-height: 80px;
+                }
             }
         }
 
         @include media("<=sm") {
-            margin-top: 30px;
+            margin: 30px 15px;
+            overflow: hidden;
         }
 
         .duration {
