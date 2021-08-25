@@ -2,9 +2,12 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
+            <div class="col-12 mb-10">
+                <a href="{{ route('admin.add') }}" class="btn btn-primary mb-3">Dodaj wideo</a>
+            </div>
             <div class="col-12">
 
-                 @if (Session::has('status'))
+                @if (Session::has('status'))
                     <div class="alert alert-success hide-3s">
                         {{ Session::get('status') }}
                     </div>
