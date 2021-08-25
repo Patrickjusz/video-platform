@@ -146,4 +146,15 @@ class AdminController extends Controller
         // $video = [];
         return redirect('edit/' . $video->id);
     }
+
+
+    /**
+     * Remove video form
+     *
+     * @return void
+     */
+    public function remove(Request $request)
+    {
+        //@TODO
+    }
 }
