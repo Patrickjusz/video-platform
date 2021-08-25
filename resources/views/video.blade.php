@@ -14,7 +14,6 @@
 <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
 <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
 
-
 @section('content')
     <div class="row video-container">
         <div class="col-lg-8 col-sm-12" style="background-color: #fff;">
