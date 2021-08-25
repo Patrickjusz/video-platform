@@ -125,4 +125,25 @@ class AdminController extends Controller
 
         return redirect()->route('admin.index');
     }
+
+
+    /**
+     * Show add video form
+     *
+     * @return void
+     */
+    public function add(Request $request)
+    {
+        $video = Video::create([
+            'name' => '',
+            'filename' => '',
+            'thumb' => '',
+            'views' => 0,
+            'slug' => '',
+            'description' => '',
+            'state' => 'inactive'
+        ]);
+        // $video = [];
+        return redirect('edit/' . $video->id);
+    }
 }

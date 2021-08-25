@@ -1,6 +1,9 @@
 $sidebar = $("#sidebar");
 $sidebarCollapse = $("#sidebarCollapse");
 $mobileHeader = $("#mobile-header");
+$hamburgerMenu = $("#hamburgerMenu");
+$exitMobileNav = $("#mobile-nav-exit");
+$searchInput = $("#search-input");
 windowWidth = $(window).width();
 
 $(function() {
@@ -27,28 +30,33 @@ $(function() {
             $($mobileHeader).hide();
             $($sidebar).addClass("active");
         } else {
-            $($mobileHeader).show();
-            $($sidebar).removeClass("active");
-            $($sidebarCollapse).removeClass("rotate180");
+            // $($mobileHeader).show();
+            // $($sidebar).removeClass("active");
+            // $($sidebarCollapse).removeClass("rotate180");
+        }
+    });
+
+    $($searchInput).autocomplete({
+        source: "/search",
+        minlength: 1,
+        autoFocus: true,
+        select: function(e, ui) {
+            if (ui.item.id > 0) {
+                window.location.href = "/" + ui.item.slug;
+            }
+        },
+        response: function(event, ui) {
+            if (!ui.content.length) {
+                var noResult = { value: "", label: "Nie znaleziono filmu" };
+                ui.content.push(noResult);
+            }
         }
     });
 });
 
 if (typeof videojs !== "undefined") {
     var player = videojs("main-video", {
-        fluid: true,
-        controlBar: {
-            children: [
-                "playToggle",
-                "volumeMenuButton",
-                "durationDisplay",
-                "timeDivider",
-                "currentTimeDisplay",
-                "progressControl",
-                "remainingTimeDisplay",
-                "fullscreenToggle"
-            ]
-        }
+        fluid: true
     });
 
     // player.on("ended", function() {
@@ -59,3 +67,11 @@ if (typeof videojs !== "undefined") {
     //     alert(12);
     // });
 }
+
+$($hamburgerMenu).on("click", function() {
+    $("#mobile-nav").fadeIn(300);
+});
+
+$($exitMobileNav).on("click", function() {
+    $("#mobile-nav").fadeOut(300);
+});

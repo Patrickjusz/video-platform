@@ -9,14 +9,25 @@ class HomepageController extends Controller
 {
     public function index()
     {
-        $videos = Video::where('state', 'active')->orderByDesc('created_at')->get();
+        $videos = Video::where('state', 'active')
+            ->where('slug', '!=', '')
+            ->where('filename', '!=', '')
+            ->where('thumb', '!=', '')
+            ->orderByDesc('created_at')
+            ->get();
 
         return view('homepage', ['videos' => $videos, 'latest_video' => $videos[0] ?? []]);
     }
 
+
     public function popular()
     {
-        $videos = Video::where('state', 'active')->orderByDesc('views')->get();
+        $videos = Video::where('state', 'active')
+            ->where('slug', '!=', '')
+            ->where('filename', '!=', '')
+            ->where('thumb', '!=', '')
+            ->orderByDesc('views')
+            ->get();
 
         $latestVideo = Video::where('state', 'active')->latest()->first();
 
