@@ -1,4 +1,14 @@
 @section('footer')
+    <div id="mobile-nav">
+        <div id="mobile-nav-exit">x</div>
+        <ul>
+            <li><a href="#">1</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">1</a></li>
+        </ul>
+    </div>
+
     <footer class="container-fluid">
         <div>&copy; 2021 haker.edu.pl . Wszelkie prawa zastrzeżone.</div>
     </footer>
@@ -6,6 +16,12 @@
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 
     <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"

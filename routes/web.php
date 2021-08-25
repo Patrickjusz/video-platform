@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Video;
@@ -36,12 +37,14 @@ use App\Models\Video;
 // });
 
 // DASHBOARD
+Route::get('/search', [SearchController::class, 'search'])->name('search');
+
 Auth::routes(['register' => false]);
 Auth::routes();
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
 Route::get('/edit/{id}', [App\Http\Controllers\AdminController::class, 'edit'])->name('admin.edit');
 Route::put('/edit/{id}', [App\Http\Controllers\AdminController::class, 'update'])->name('admin.update');
-
+Route::get('/add', [App\Http\Controllers\AdminController::class, 'add'])->name('admin.add');
 
 
 // FRONTEND
@@ -49,5 +52,7 @@ Route::get('/', [HomepageController::class, 'index'])->name('video.index');
 Route::get('/popularne', [HomepageController::class, 'popular'])->name('video.popular');
 Route::get('/{slug}', [VideoController::class, 'index'])
     ->where('slug', '[A-Za-z0-9\-]+');
+
+
 
 // Route::get('/kategoria/{slug}', [HomepageController::class, 'category'])->name('video.category');
