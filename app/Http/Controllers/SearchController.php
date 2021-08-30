@@ -14,9 +14,10 @@ class SearchController extends Controller
             ->where('slug', '!=', '')
             ->where('filename', '!=', '')
             ->where('thumb', '!=', '')
-            ->where('state', 'active')
-            ->where('name', 'LIKE', '%' . $term . '%')
-            ->orWhere('description', 'LIKE', '%' . $term . '%')
+            ->where(function ($query) use ($term) {
+                $query->where('name', 'LIKE', '%' . $term . '%')
+                    ->orWhere('description', 'LIKE', '%' . $term . '%');
+            })
             ->take(10)
             ->orderByDesc('views')
             ->get();
