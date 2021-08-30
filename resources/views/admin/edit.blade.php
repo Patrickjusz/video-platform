@@ -74,7 +74,8 @@
                 {!! Form::submit('Zapisz wideo', ['class' => 'btn btn-success']) !!}
                 <div class="btn btn-primary" onclick="window.open('{{ url($video->slug) }}')">&nbsp;<i
                         class="bi bi-eye"></i>&nbsp;</div>
-                <div class="btn btn-danger">&nbsp;<i class="bi bi-trash">&nbsp;</i>&nbsp;</div>
+                <div onclick="removeVideo({{ $video->id }})" class="btn btn-danger">&nbsp;<i
+                        class="bi bi-trash">&nbsp;</i>&nbsp;</div>
                 {!! Form::close() !!}
             </div>
         </div>

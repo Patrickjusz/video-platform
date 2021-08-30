@@ -50,7 +50,7 @@ class AdminController extends Controller
                         $ret .= '<button onclick="window.open(\'' . $row->slug . '\',\'_blank\');" class="btn-action btn btn-success btn-sm"><i class="bi bi-eye"></i></button>';
                     }
                     $ret .=   '<button onclick="window.location.href = \'edit/' . $row->id . '\'" class="btn-action btn btn-primary btn-sm"><i class="bi bi-pencil"></i></button>';
-                    $ret .= '<a href="javascript:void(0)" class="btn-action btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>';
+                    $ret .= '<button onclick="removeVideo(' . $row->id . ');" class="btn-action btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>';
                     return $ret;
                 })
                 ->rawColumns(['thumb_html', 'action'])
@@ -155,6 +155,11 @@ class AdminController extends Controller
      */
     public function remove(Request $request)
     {
-        //@TODO
+        $input = $request->all();
+        $video = Video::findOrFail($input['id']);
+        $video->state = 'delete';
+        if ($video->save()) {
+            return response()->json(array('status' => 'success'), 200);
+        }
     }
 }
