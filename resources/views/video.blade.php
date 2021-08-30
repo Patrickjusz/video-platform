@@ -22,12 +22,6 @@
                 <source src="{{ Storage::url($video->filename) }}" type='video/mp4'>
             </video>
 
-            {{-- <video width="320" height="240" controls>
-                <source src="movie.mp4" type="video/mp4">
-                <source src="movie.ogg" type="video/ogg">
-              Your browser does not support the video tag.
-              </video> --}}
-
             <h1 class="title">{{ $video->name }}</h1>
 
             {{-- <div class="stats">{{ $video->views }} wyświetleń • 24 sty 2021 </div> --}}
