@@ -21,8 +21,7 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <!-- Scripts -->
-    <script src="{{ asset('js/admin/admin.app.js') }}" defer></script>
-
+    <script src="{{ asset('js/admin/admin.app.js') }}?v={{ RAND() }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -30,6 +29,26 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/admin/admin.app.css') }}" rel="stylesheet">
+
+    <script>
+        function removeVideo(id) {
+            if (confirm('Czy chcesz usunąć film o id: ' + id + '?')) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/remove',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        "id": id
+                    },
+                    success: function(data) {
+                        if (data.status == 'success') {
+                            window.location.href = '/{{ ADMIN_PANEL_INDEX_URL }}';
+                        }
+                    }
+                });
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -63,7 +82,8 @@
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('form_login.register') }}</a>
+                                    <a class="nav-link"
+                                        href="{{ route('register') }}">{{ __('form_login.register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -74,8 +94,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                     document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                                                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('form_login.logout') }}
                                     </a>
 

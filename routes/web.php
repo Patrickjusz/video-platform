@@ -45,7 +45,7 @@ Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->na
 Route::get('/edit/{id}', [App\Http\Controllers\AdminController::class, 'edit'])->name('admin.edit');
 Route::put('/edit/{id}', [App\Http\Controllers\AdminController::class, 'update'])->name('admin.update');
 Route::get('/add', [App\Http\Controllers\AdminController::class, 'add'])->name('admin.add');
-Route::get('/remove', [App\Http\Controllers\AdminController::class, 'remove'])->name('admin.remove');
+Route::post('/remove', [App\Http\Controllers\AdminController::class, 'remove'])->name('admin.remove');
 
 
 // FRONTEND

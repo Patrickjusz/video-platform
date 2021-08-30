@@ -6,6 +6,8 @@ $exitMobileNav = $("#mobile-nav-exit");
 $searchInput = $("#search-input");
 windowWidth = $(window).width();
 
+
+
 $(function() {
     $($sidebarCollapse).on("click", function() {
         if (
