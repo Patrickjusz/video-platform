@@ -19,6 +19,12 @@ class Video extends Model
     }
 
 
+    public function views()
+    {
+        return $this->hasMany('App\Models\View');
+    }
+
+
     // TODO 
     public function getSimilarVideos(int $limit = 10)
     {

@@ -20,7 +20,7 @@ class CreateVideosTable extends Migration
             $table->string('filename');
             $table->string('thumb');
             $table->string('tags');
-            $table->integer('views');
+            $table->integer('views_cache');
             $table->string('slug');
             $table->enum('state', ['active', 'inactive', 'delete']);
         });

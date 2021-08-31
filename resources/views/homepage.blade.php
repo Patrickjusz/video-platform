@@ -25,7 +25,7 @@
                         <div class="title">{{ Str::limit($video->name, 23) }}</div>
                         <div class="stats">
                             <div class="row">
-                                <div class=" col-12 views">{{ shortNumberFormat($video->views) }} wyświetleń</div>
+                                <div class=" col-12 views">{{ shortNumberFormat($video->views_cache) }} wyświetleń</div>
                                 <div class="col-12 date">Dodano {{ timeElapsedString($video->created_at) }}</div>
                             </div>
                         </div>
