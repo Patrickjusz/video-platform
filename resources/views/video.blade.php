@@ -25,7 +25,7 @@
             <h1 class="title">{{ $video->name }}</h1>
 
             {{-- <div class="stats">{{ $video->views }} wyświetleń • 24 sty 2021 </div> --}}
-            <div class="stats">{{ shortNumberFormat($video->views) }} wyświetleń •
+            <div class="stats">{{ shortNumberFormat($video->views_cache) }} wyświetleń •
                 {{ timeElapsedString($video->created_at) }} </div>
 
             <div class="description">
@@ -59,7 +59,7 @@
                     </div>
                     <div class="col-7">
                         <b>{{ Str::limit($similarVideo->name, 20) }}</b><br>
-                        {{ shortNumberFormat($similarVideo->views) }} wyświetleń<br>
+                        {{ shortNumberFormat($similarVideo->views_cache) }} wyświetleń<br>
                         Dodano {{ timeElapsedString($similarVideo->created_at) }}
                     </div>
                 </a>
