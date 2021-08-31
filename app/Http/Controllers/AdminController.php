@@ -138,7 +138,7 @@ class AdminController extends Controller
             'name' => '',
             'filename' => '',
             'thumb' => '',
-            'views' => 0,
+            'views_cache' => 0,
             'slug' => '',
             'description' => '',
             'state' => 'inactive'
