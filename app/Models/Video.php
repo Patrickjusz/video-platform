@@ -11,7 +11,7 @@ class Video extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'filename', 'thumb', 'views', 'slug', 'state', 'description', 'created_at'];
+    protected $fillable = ['name', 'filename', 'thumb', 'views_cache', 'slug', 'state', 'description', 'created_at'];
 
     public function tags()
     {

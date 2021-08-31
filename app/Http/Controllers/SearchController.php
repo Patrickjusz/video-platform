@@ -19,7 +19,7 @@ class SearchController extends Controller
                     ->orWhere('description', 'LIKE', '%' . $term . '%');
             })
             ->take(10)
-            ->orderByDesc('views')
+            ->orderByDesc('views_cache')
             ->get();
 
         $results = array();

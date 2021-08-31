@@ -59,8 +59,8 @@
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('views', 'Ilość odwiedzin') !!}
-                    {!! Form::number('views', null, ['class' => 'form-control', 'required']) !!}
+                    {!! Form::label('views_cache', 'Ilość odwiedzin') !!}
+                    {!! Form::number('views_cache', null, ['class' => 'form-control', 'required']) !!}
                 </div>
 
 
