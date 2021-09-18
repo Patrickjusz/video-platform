@@ -33,7 +33,7 @@ class HomepageController extends Controller
                 ->where('slug', '!=', '')
                 ->where('filename', '!=', '')
                 ->where('thumb', '!=', '')
-                ->orderByDesc('views')
+                ->orderByDesc('views_cache')
                 ->get();
         });
 
