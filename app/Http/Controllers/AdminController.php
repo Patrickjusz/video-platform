@@ -82,7 +82,7 @@ class AdminController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|max:255',
-            'views' => 'required|integer',
+            'views_cache' => 'required|integer',
             'slug' => 'unique:videos,slug,' . $id . '|required',
             'state' => 'required',
             'description' => 'required',
