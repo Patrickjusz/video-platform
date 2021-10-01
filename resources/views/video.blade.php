@@ -18,7 +18,7 @@
     <div class="row video-container">
         <div class="col-lg-8 col-sm-12" style="background-color: #fff;">
             <video id="main-video" class="video-js vjs-default-skin  vjs-big-play-centered" controls preload="metadata"
-                poster="{{ Storage::url($video->thumb) }}" width="640" height="268">
+                poster="{{ Storage::url($video->thumb) }}">
                 <source src="{{ Storage::url($video->filename) }}" type='video/mp4'>
             </video>
 

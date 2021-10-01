@@ -3,3 +3,11 @@
         margin: 1px;
     }
 }
+
+#main-video {
+    width: 640px;
+    height: 268px;
+    @include media("<=md") {
+        width: 100%;
+    }
+}

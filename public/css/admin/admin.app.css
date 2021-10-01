@@ -10948,3 +10948,14 @@ a.text-dark:focus {
   margin: 1px;
 }
 
+#main-video {
+  width: 640px;
+  height: 268px;
+}
+
+@media (max-width: 992px) {
+  #main-video {
+    width: 100%;
+  }
+}
+
