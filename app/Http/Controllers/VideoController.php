@@ -23,7 +23,7 @@ class VideoController extends Controller
                     //duplicate 
                 }
 
-                return view('video', ['video' => $video]);
+                return view('video', ['video' => $video, 'menu' => getNavigationElements()]);
             }
         }
 
