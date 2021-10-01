@@ -6,8 +6,6 @@ $exitMobileNav = $("#mobile-nav-exit");
 $searchInput = $("#search-input");
 windowWidth = $(window).width();
 
-
-
 $(function() {
     $($sidebarCollapse).on("click", function() {
         if (
@@ -72,8 +70,10 @@ if (typeof videojs !== "undefined") {
 
 $($hamburgerMenu).on("click", function() {
     $("#mobile-nav").fadeIn(300);
+    $("body").addClass("overflow-hidden");
 });
 
 $($exitMobileNav).on("click", function() {
     $("#mobile-nav").fadeOut(300);
+    $("body").removeClass("overflow-hidden");
 });

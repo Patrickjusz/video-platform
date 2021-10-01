@@ -414,6 +414,10 @@ span {
   margin-top: 10px;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 @media (max-width: 992px) {
   .video-container {
     margin: 2px 2px;
