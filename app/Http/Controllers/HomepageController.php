@@ -22,12 +22,13 @@ class HomepageController extends Controller
         });
 
 
-        return view('homepage', ['videos' => $videos, 'latest_video' => $videos[0] ?? []]);
+        return view('homepage', ['videos' => $videos, 'latest_video' => $videos[0] ?? [], 'menu' => getNavigationElements()]);
     }
 
 
     public function popular()
     {
+        // dd(getNavigationElements());
         $videos = Cache::remember('homepage_popular', $this->cacheTime, function () {
             return Video::where('state', 'active')
                 ->where('slug', '!=', '')
@@ -41,6 +42,6 @@ class HomepageController extends Controller
             return Video::where('state', 'active')->latest()->first();
         });
 
-        return view('homepage', ['videos' => $videos, 'latest_video' => $latestVideo]);
+        return view('homepage', ['videos' => $videos, 'latest_video' => $latestVideo, 'menu' => getNavigationElements()]);
     }
 }

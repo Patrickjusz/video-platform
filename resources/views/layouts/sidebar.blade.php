@@ -7,7 +7,17 @@
         </a>
 
         <ul class="list-unstyled components">
-            <li>
+            @foreach ($menu as $element)
+                @if ($element['show'] == 1)
+                    <li>
+                        <a href="{{ $element['url'] }}">
+                            <i class="{{ $element['icon'] }}"></i>
+                            {{ $element['text'] }}
+                        </a>
+                    </li>
+                @endif
+            @endforeach
+            {{-- <li>
                 <a href="{{ route('video.index') }}">
                     <i class="fas fa-2x fa-calendar-alt"></i>
                     <br />Najnowsze
@@ -60,7 +70,7 @@
                     <i class="fab fa-2x fa-twitter-square"></i>
                     <br />Twitter
                 </a>
-            </li>
+            </li> --}}
 
             {{-- <li>
                 <a href="#">
@@ -70,11 +80,11 @@
             </li> --}}
 
             <!-- <li>
-                        <a href="#">
-                          <i class="fas fa-paper-plane"></i>
-                          Pinterest
-                        </a>
-                      </li> -->
+                                            <a href="#">
+                                              <i class="fas fa-paper-plane"></i>
+                                              Pinterest
+                                            </a>
+                                          </li> -->
         </ul>
     </nav>
 @endsection

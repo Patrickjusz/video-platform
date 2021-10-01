@@ -1,12 +1,19 @@
 @section('footer')
     <div id="mobile-nav">
         <div id="mobile-nav-exit">x</div>
-        <ul>
-            <li><a href="#">1</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">1</a></li>
-        </ul>
+        <div class="row">
+            @foreach ($menu as $element)
+                @if ($element['show'] == 1)
+                    <div class="col-6 mobile-nav-element bold">
+                        <a href="{{ $element['url'] }}">
+                            <i class="{{ $element['icon'] }}"></i>
+                            <span>{{ $element['text'] }}</span>
+                        </a>
+                    </div>
+                @endif
+            @endforeach
+        </div>
+
     </div>
 
     <footer class="container-fluid">

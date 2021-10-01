@@ -95,3 +95,19 @@ if (!function_exists('timeElapsedString')) {
         return $string ? implode(', ', $string) . ' temu' : 'dzisiaj';
     }
 }
+
+
+if (!function_exists('getNavigation')) {
+    function getNavigationElements()
+    {
+        return [
+            ['text' => 'Najnowsze', 'icon' => 'fas fa-2x fa-calendar-alt', 'url' => route('video.index'), 'show' => 1],
+            ['text' => 'Popularne', 'icon' => 'fas fa-2x fa-fire-alt', 'url' => route('video.popular'), 'show' => 1],
+            ['text' => 'YouTube', 'icon' => 'fab fa-2x fa-youtube', 'url' => 'https://www.youtube.com/channel/UCxnQfWxR4Xp4Tv_dLh2Xvtw', 'show' => 1],
+            ['text' => 'Na żywo', 'icon' => 'fas fa-2x fa-headset', 'url' => '#', 'show' => 0],
+            ['text' => 'Facebook', 'icon' => 'fab fa-2x fa-facebook-square', 'url' => 'https://www.facebook.com/HakerEduPL', 'show' => 1],
+            ['text' => 'Discrod', 'icon' => 'fab fa-2x fa-discord', 'url' => 'https://discord.gg/Rr9e6ugjay', 'show' => 1],
+            ['text' => 'Twitter', 'icon' => 'fab fa-2x fa-twitter-square', 'url' => 'https://twitter.com/hakeredupl', 'show' => 1],
+        ];
+    }
+}

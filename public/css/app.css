@@ -385,10 +385,17 @@ span {
   height: 100%;
   color: #fff;
   padding: 30px 30px;
+  padding-top: 140px;
+  text-align: center;
+}
+
+#mobile-nav .bold {
+  font-weight: bold;
 }
 
 #mobile-nav a {
   color: #fff;
+  cursor: pointer;
 }
 
 #mobile-nav #mobile-nav-exit {
@@ -396,6 +403,15 @@ span {
   right: 25px;
   top: 5px;
   font-size: 45px;
+}
+
+#mobile-nav .mobile-nav-element {
+  height: 140px;
+}
+
+#mobile-nav .mobile-nav-element span {
+  display: block;
+  margin-top: 10px;
 }
 
 @media (max-width: 992px) {
