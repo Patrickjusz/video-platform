@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             VideosSeeder::class,
             TagsSeeder::class,
             TagVideoSeeder::class,
+            UsersSeeder::class,
         ]);
     }
 }
