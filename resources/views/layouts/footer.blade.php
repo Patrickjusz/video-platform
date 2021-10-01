@@ -13,7 +13,6 @@
                 @endif
             @endforeach
         </div>
-
     </div>
 
     <footer class="container-fluid">
