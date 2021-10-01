@@ -12,7 +12,7 @@
                     <li>
                         <a href="{{ $element['url'] }}">
                             <i class="{{ $element['icon'] }}"></i>
-                            {{ $element['text'] }}
+                            <br />{{ $element['text'] }}
                         </a>
                     </li>
                 @endif
@@ -80,11 +80,11 @@
             </li> --}}
 
             <!-- <li>
-                                            <a href="#">
-                                              <i class="fas fa-paper-plane"></i>
-                                              Pinterest
-                                            </a>
-                                          </li> -->
+                                                <a href="#">
+                                                  <i class="fas fa-paper-plane"></i>
+                                                  Pinterest
+                                                </a>
+                                              </li> -->
         </ul>
     </nav>
 @endsection
