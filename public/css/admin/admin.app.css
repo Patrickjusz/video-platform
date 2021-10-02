@@ -10959,3 +10959,13 @@ a.text-dark:focus {
   }
 }
 
+.select-tag {
+  height: 400px !important;
+}
+
+@media (max-width: 992px) {
+  .select-tag {
+    height: 300px !important;
+  }
+}
+

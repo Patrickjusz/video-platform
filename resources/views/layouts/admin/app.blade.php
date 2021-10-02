@@ -48,6 +48,24 @@
                 });
             }
         }
+
+        function removeTag(id) {
+            if (confirm('Czy chcesz usunąć tag o id: ' + id + '?')) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/remove_tag',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        "id": id
+                    },
+                    success: function(data) {
+                        if (data.status == 'success') {
+                            window.location.href = '/{{ ADMIN_PANEL_EDIT_TAGS_URL }}';
+                        }
+                    }
+                });
+            }
+        }
     </script>
 </head>
 
@@ -55,11 +73,11 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/admin') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -76,7 +94,8 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('form_login.login') }}</a>
+                                    <a class="nav-link"
+                                        href="{{ route('login') }}">{{ __('form_login.login') }}</a>
                                 </li>
                             @endif
 
@@ -94,13 +113,22 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('admin.add') }}"                                                                                              document.getElementById('logout-form').submit();">
+                                        Dodaj wideo
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('admin.editTagsTable') }}"                                                                                              document.getElementById('logout-form').submit();">
+                                        Edytuj tagi
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                     document.getElementById('logout-form').submit();">
+                                                                                                                                             document.getElementById('logout-form').submit();">
                                         {{ __('form_login.logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none">
                                         @csrf
                                     </form>
                                 </div>

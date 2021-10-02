@@ -46,8 +46,11 @@ Route::get('/edit/{id}', [App\Http\Controllers\AdminController::class, 'edit'])-
 Route::put('/edit/{id}', [App\Http\Controllers\AdminController::class, 'update'])->name('admin.update');
 Route::get('/add', [App\Http\Controllers\AdminController::class, 'add'])->name('admin.add');
 Route::post('/remove', [App\Http\Controllers\AdminController::class, 'remove'])->name('admin.remove');
-
-
+Route::get('/edit_tags', [App\Http\Controllers\AdminController::class, 'editTagsTable'])->name('admin.editTagsTable');
+Route::get('/edit_tags/{id}', [App\Http\Controllers\AdminController::class, 'editTag'])->name('admin.editTag');
+Route::put('/edit_tags/{id}', [App\Http\Controllers\AdminController::class, 'updateTag'])->name('admin.updateTag');
+Route::post('/remove_tag', [App\Http\Controllers\AdminController::class, 'removeTag'])->name('admin.removeTag');
+Route::get('/add_tag', [App\Http\Controllers\AdminController::class, 'addTag'])->name('admin.addTag');
 // FRONTEND
 Route::get('/', [HomepageController::class, 'index'])->name('video.index');
 Route::get('/popularne', [HomepageController::class, 'popular'])->name('video.popular');

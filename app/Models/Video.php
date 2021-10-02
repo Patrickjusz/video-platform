@@ -69,4 +69,12 @@ class Video extends Model
     {
         return ($this->getDetails('storage/' . $this->filename)['playtime_string']) ?? '';
     }
+
+    /**
+     * Selectbox in edit video
+     */
+    public function getTagsListAttribute()
+    {
+        return $this->tags->pluck('id')->all();
+    }
 }

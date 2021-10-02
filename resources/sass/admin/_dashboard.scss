@@ -11,3 +11,13 @@
         width: 100%;
     }
 }
+
+
+
+.select-tag {
+    height: 400px !important;
+
+    @include media("<=md") {
+        height: 300px !important;
+    }
+}
