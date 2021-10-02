@@ -37,7 +37,7 @@ $(function() {
     });
 
     $($searchInput).autocomplete({
-        source: "/search",
+        source: "search",
         minlength: 1,
         autoFocus: true,
         select: function(e, ui) {
