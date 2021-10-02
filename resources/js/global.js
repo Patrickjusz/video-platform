@@ -42,7 +42,7 @@ $(function() {
         autoFocus: true,
         select: function(e, ui) {
             if (ui.item.id > 0) {
-                window.location.href = "/" + ui.item.slug;
+                window.location.href = "" + ui.item.slug;
             }
         },
         response: function(event, ui) {
