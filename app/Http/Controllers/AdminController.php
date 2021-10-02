@@ -8,7 +8,8 @@ use App\Models\Video;
 use DataTables;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
+
 
 class AdminController extends Controller
 {
@@ -129,6 +130,13 @@ class AdminController extends Controller
 
 
             Session::flash('status', 'Wideo zostało zaktualizowane');
+
+            // $response = Http::get('http://127.0.0.1:8000/admin/generateSitemap');
+
+            if (env('APP_DEBUG') == false)
+            {
+                $response = Http::get('https://haker.edu.pl/admin/generateSitemap');
+            }
         }
 
         return redirect()->route('admin.index');
