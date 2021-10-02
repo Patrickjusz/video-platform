@@ -17,7 +17,7 @@ use App\Models\Video;
 |
 */
 
-Route::get('/gen', function () {
+Route::get('/generateSitemap', function () {
     //https://github.com/Laravelium/laravel-sitemap/wiki/Generate-sitemap
     $video = Video::where('state', 'active')->get();
     $latestVideo = Video::where('state', 'active')->latest()->first();
