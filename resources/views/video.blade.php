@@ -16,8 +16,8 @@
     <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
     <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
 
-    <div class="row video-container">
-        <div class="col-lg-8 col-sm-12" style="background-color: #fff;">
+    <main class="row video-container">
+        <article class="col-lg-8 col-sm-12" style="background-color: #fff;">
             <video id="main-video" class="video-js vjs-default-skin  vjs-big-play-centered" controls preload="metadata"
                 poster="{{ Storage::url($video->thumb) }}">
                 <source src="{{ Storage::url($video->filename) }}" type='video/mp4'>
@@ -51,9 +51,9 @@
                     <br>
                 </div>
             @endauth
-        </div>
+        </article>
 
-        <div class="col-lg-4 col-sm-12" id="similar-videos">
+        <aside class="col-lg-4 col-sm-12" id="similar-videos">
             @forelse ($video->getSimilarVideos(7) as $similarVideo)
                 <a class="row video" href="{{ $similarVideo->slug }}">
                     <div class="col-5"
@@ -70,6 +70,6 @@
                 brak
             @endforelse
 
-        </div>
-    </div>
+        </aside>
+    </main>
 @endsection
