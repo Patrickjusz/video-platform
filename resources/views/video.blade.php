@@ -13,7 +13,7 @@
 
 
 @section('content')
-    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.min.css" rel="stylesheet" />
     <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
 
     <main class="row video-container">
