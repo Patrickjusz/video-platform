@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Cache;
 
 class HomepageController extends Controller
 {
-    private $cacheTime = 0;
+    private $cacheTime = 240;
 
     public function index()
     {
