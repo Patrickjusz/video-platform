@@ -11,10 +11,11 @@
 @extends('layouts.sidebar')
 @extends('layouts.footer')
 
-<link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
-<script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
 
 @section('content')
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
+
     <div class="row video-container">
         <div class="col-lg-8 col-sm-12" style="background-color: #fff;">
             <video id="main-video" class="video-js vjs-default-skin  vjs-big-play-centered" controls preload="metadata"
@@ -70,6 +71,5 @@
             @endforelse
 
         </div>
-    </div>
     </div>
 @endsection

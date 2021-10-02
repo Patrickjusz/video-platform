@@ -18,7 +18,7 @@
 
         @if (isset($title))
             <div class="col-12">
-                <h2>Kategoria: <span class="badge badge-secondary">{{ $title }}</span></h2>
+                <h2>Kategoria:<span class="badge badge-secondary">{{ $title }}</span></h2>
             </div>
         @endif
 
