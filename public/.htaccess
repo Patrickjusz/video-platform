@@ -4,6 +4,9 @@
     </IfModule>
 
     RewriteEngine On
+    RewriteCond %{HTTP_REFERER} !^https://haker.edu.pl/wideo/.*$ [NC]
+    RewriteCond %{HTTP_REFERER} !^https://haker.edu.pl/wideo/.*$ [NC]
+    RewriteRule .(mp4|avi|webm|ogv)$ - [F]`
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
