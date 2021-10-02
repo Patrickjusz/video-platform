@@ -1,7 +1,7 @@
 @section('page_title', $video->name)
 @section('page_description', substr($video->description, 0, 157) . '...')
 @section('page_keywords', 'haker')
-@section('og_image', Storage::url($video->thumb))
+@section('og_image', asset(Storage::url($video->thumb)))
 @section('article_published_time', $video->created_at)
 @section('article_modified_time', $video->updated_at ?? $video->created_at)
 
