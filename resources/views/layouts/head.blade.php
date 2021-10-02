@@ -4,7 +4,8 @@
     @if ($title ?? '')
         <meta name="robots" content="noindex" />
     @else
-        <meta name="robots" content="index, follow">
+        {{-- <meta name="robots" content="index, follow"> --}}
+        <meta name="robots" content="noindex" />
     @endif
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     {{-- <meta http-equiv="last-modified" content="@yield('article_modified_time')" /> --}}
