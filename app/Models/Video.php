@@ -28,6 +28,8 @@ class Video extends Model
     // TODO 
     public function getSimilarVideos(int $limit = 10)
     {
+        // $videoId = $this->getKey('id');
+        
         /**
          * Alghoritm:
          * -Get tags

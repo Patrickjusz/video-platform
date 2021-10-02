@@ -203,7 +203,8 @@ class AdminController extends Controller
     public function updateTag($id, Request $request)
     {
         $validated = $request->validate([
-            'name' => 'unique:tags,name|required|max:255'
+            'name' => 'unique:tags,name,' . $id . '|required|max:255',
+            'slug' => 'unique:tags,slug,' . $id . '|required|max:255'
         ]);
 
         $tag = Tag::findOrFail($id);
@@ -245,7 +246,8 @@ class AdminController extends Controller
     {
         $video = Tag::create([
             'name' => '',
-            'state' => 'active'
+            'slug' => '',
+            'state' => 'active',
         ]);
         // $video = [];
         return redirect('edit_tags/' . $video->id);

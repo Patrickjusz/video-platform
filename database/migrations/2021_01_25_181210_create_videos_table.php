@@ -21,7 +21,7 @@ class CreateVideosTable extends Migration
             $table->string('thumb');
             $table->string('tags');
             $table->integer('views_cache');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->enum('state', ['active', 'inactive', 'delete']);
         });
     }
