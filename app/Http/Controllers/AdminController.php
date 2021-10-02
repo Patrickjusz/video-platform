@@ -99,6 +99,7 @@ class AdminController extends Controller
         $toRemove = [];
 
         if (!empty($videoFile)) {
+            ini_set('max_execution_time', 7200); //2h
             $videoNewPath =  $videoFile->store('videos', 'public');
 
             if ($videoNewPath) {
