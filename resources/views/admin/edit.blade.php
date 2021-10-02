@@ -69,6 +69,15 @@
                     {!! Form::select('state', ['active' => 'active', 'inactive' => 'inactive'], null, ['class' => 'form-control', 'required']) !!}
                 </div>
 
+                <div class="form-group">
+                    <div class="col-md-4 control-label">
+                        {!! Form::label('TagsList', 'Wybierz kategorie:') !!}
+                    </div>
+                    <div class="col-md-6">
+                        {!! Form::select('TagsList[]', $categories, null, ['class' => 'form-control select-tag', 'multiple']) !!}
+                    </div>
+                </div>
+
                 <hr>
 
                 {!! Form::submit('Zapisz wideo', ['class' => 'btn btn-success']) !!}

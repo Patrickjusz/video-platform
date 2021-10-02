@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Models\Video;
 use DataTables;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -69,7 +71,8 @@ class AdminController extends Controller
     public function edit($id, Request $request)
     {
         $video = Video::findOrFail($id);
-        return view('admin.edit', ['video' => $video]);
+        $categories = Tag::where('state', '=', 'active')->pluck('name', 'id');
+        return view('admin.edit', ['video' => $video, 'categories' => $categories]);
     }
 
 
@@ -120,6 +123,10 @@ class AdminController extends Controller
                 Storage::delete('public/' .  $file);
             }
 
+            $tagsIds = $request->input('TagsList');
+            $video->tags()->sync($tagsIds);
+
+
             Session::flash('status', 'Wideo zostało zaktualizowane');
         }
 
@@ -161,5 +168,86 @@ class AdminController extends Controller
         if ($video->save()) {
             return response()->json(array('status' => 'success'), 200);
         }
+    }
+
+
+    /**
+     * Show edit tags table
+     *
+     * @return void
+     */
+    public function editTagsTable(Request $request)
+    {
+        $tags = Tag::where('state', 'active')->get();
+        return view('admin.edit_tags_table', ['tags' => $tags]);
+    }
+
+
+    /**
+     * Show edit tag form
+     *
+     * @return void
+     */
+    public function editTag($id, Request $request)
+    {
+        $tag = Tag::findOrFail($id);
+        return view('admin.edit_tag', ['tag' => $tag]);
+    }
+
+
+    /**
+     * Update tag
+     *
+     * @return void
+     */
+    public function updateTag($id, Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'unique:tags,name|required|max:255'
+        ]);
+
+        $tag = Tag::findOrFail($id);
+        $input = $request->all();
+
+        if ($tag->update($input)) {
+            Session::flash('status', 'Tag został zaktualizowane');
+        }
+
+        return redirect()->route('admin.editTagsTable');
+    }
+
+
+    /**
+     * Remove tag
+     *
+     * @return void
+     */
+    public function removeTag(Request $request)
+    {
+        $input = $request->all();
+        $video = Tag::findOrFail($input['id']);
+        $video->state = 'delete';
+
+        if ($video->save()) {
+            Tag::removeTagsFromPivotTable($input['id']);
+            Session::flash('status', 'Tag został usunięty');
+            return response()->json(array('status' => 'success'), 200);
+        }
+    }
+
+
+    /**
+     * Show add video form
+     *
+     * @return void
+     */
+    public function addTag(Request $request)
+    {
+        $video = Tag::create([
+            'name' => '',
+            'state' => 'active'
+        ]);
+        // $video = [];
+        return redirect('edit_tags/' . $video->id);
     }
 }
