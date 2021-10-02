@@ -37,7 +37,7 @@
 
             <div id="tags">
                 @forelse ($video->tags as $tag)
-                    <a href="/{{ CATEGORY_URL }}{{ $tag->slug }}" rel="nofollow"
+                    <a href="{{ url(CATEGORY_URL . $tag->slug) }}" rel="nofollow"
                         class="badge badge-secondary">{{ $tag->name }}</a>
                 @empty
 
@@ -55,7 +55,7 @@
 
         <aside class="col-lg-4 col-sm-12" id="similar-videos">
             @forelse ($video->getSimilarVideos(7) as $similarVideo)
-                <a class="row video" href="{{ $similarVideo->slug }}">
+                <a class="row video" href="{{ url($similarVideo->slug) }}">
                     <div class="col-5"
                         style=" background-image: url('{{ Storage::url($similarVideo->thumb) }}'); ">
                         <div class="duration">{{ $similarVideo->getDuration() }}</div>
