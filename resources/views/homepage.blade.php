@@ -16,9 +16,15 @@
     <div class="row video-wrapper" data-aos="zoom-out-up" data-aos-delay="50" data-aos-duration="500"
         data-aos-easing="ease-in-out" data-aos-once="true">
 
+        @if (isset($title))
+            <div class="col-12">
+                <h2>Kategoria: <span class="badge badge-secondary">{{ $title }}</span></h2>
+            </div>
+        @endif
+
         @forelse ($videos as $video)
             @if (isset($video->slug))
-                <a href="{{ $video->slug }}" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 video-box">
+                <a href="/{{ $video->slug }}" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 video-box">
                     <img class="img" src="{{ Storage::url($video->thumb) }}" alt="{{ $video->name }}" />
                     <div class="duration">{{ $video->getDuration() }}</div>
                     <div class="description">

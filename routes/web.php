@@ -51,9 +51,12 @@ Route::get('/edit_tags/{id}', [App\Http\Controllers\AdminController::class, 'edi
 Route::put('/edit_tags/{id}', [App\Http\Controllers\AdminController::class, 'updateTag'])->name('admin.updateTag');
 Route::post('/remove_tag', [App\Http\Controllers\AdminController::class, 'removeTag'])->name('admin.removeTag');
 Route::get('/add_tag', [App\Http\Controllers\AdminController::class, 'addTag'])->name('admin.addTag');
+
 // FRONTEND
 Route::get('/', [HomepageController::class, 'index'])->name('video.index');
 Route::get('/popularne', [HomepageController::class, 'popular'])->name('video.popular');
+Route::get('/kategoria/{slug}', [HomepageController::class, 'tag'])
+    ->where('tag', '[A-Za-z0-9\-]+');
 Route::get('/{slug}', [VideoController::class, 'index'])
     ->where('slug', '[A-Za-z0-9\-]+');
 

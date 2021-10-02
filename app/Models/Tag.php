@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class Tag extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'state'];
+    protected $fillable = ['name', 'state', 'slug'];
 
 
     public function videos()

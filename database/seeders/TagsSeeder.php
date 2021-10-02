@@ -20,7 +20,8 @@ class TagsSeeder extends Seeder
         foreach ($tags as $tag) {
             $randDate = Carbon::today()->subDays(rand(0, 865));
             DB::table('tags')->insert([
-                'name' => $tag,
+                'name' => trim($tag),
+                'slug' => trim(str_replace(' ', '-', $tag)),
                 'created_at' => $randDate,
                 'updated_at' => $randDate
             ]);

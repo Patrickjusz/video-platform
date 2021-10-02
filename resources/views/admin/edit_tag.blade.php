@@ -21,6 +21,11 @@
                     {!! Form::text('name', null, ['class' => 'form-control', 'required']) !!}
                 </div>
 
+                <div class="form-group">
+                    {!! Form::label('slug', 'Slug') !!}
+                    {!! Form::text('slug', null, ['class' => 'form-control', 'required']) !!}
+                </div>
+
                 {!! Form::submit('Zapisz wideo', ['class' => 'btn btn-success']) !!}
                 <div onclick="removeTag({{ $tag->id }})" class="btn btn-danger">&nbsp;<i
                         class="bi bi-trash">&nbsp;</i>&nbsp;</div>
