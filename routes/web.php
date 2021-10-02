@@ -17,24 +17,24 @@ use App\Models\Video;
 |
 */
 
-// Route::get('/gen', function () {
-//     //https://github.com/Laravelium/laravel-sitemap/wiki/Generate-sitemap
-//     $video = Video::where('state', 'active')->get();
-//     $latestVideo = Video::where('state', 'active')->latest()->first();
-//     $lastMod = ($latestVideo->updated_at ?? $latestVideo->created_at);
+Route::get('/gen', function () {
+    //https://github.com/Laravelium/laravel-sitemap/wiki/Generate-sitemap
+    $video = Video::where('state', 'active')->get();
+    $latestVideo = Video::where('state', 'active')->latest()->first();
+    $lastMod = ($latestVideo->updated_at ?? $latestVideo->created_at);
 
-//     $sitemap = App::make("sitemap");
-//     $sitemap->add(env('APP_URL'), $lastMod, 1, 'daily');
-//     $sitemap->add(env('APP_URL') . '/popularne', $lastMod, 1, 'daily');
+    $sitemap = App::make("sitemap");
+    $sitemap->add(env('APP_URL'), $lastMod, 1, 'daily');
+    $sitemap->add(env('APP_URL') . '/popularne', $lastMod, 1, 'daily');
 
-//     foreach ($video as $video) {
-//         $videoUrl = env('APP_URL') . '/' . $video->slug;
-//         $lastMod = ($video->updated_at ?? $video->created_at);
-//         $sitemap->add($videoUrl, $lastMod, 1, 'monthly');
-//     }
+    foreach ($video as $video) {
+        $videoUrl = env('APP_URL') . '/' . $video->slug;
+        $lastMod = ($video->updated_at ?? $video->created_at);
+        $sitemap->add($videoUrl, $lastMod, 1, 'monthly');
+    }
 
-//     $sitemap->store('xml', 'sitemap');
-// });
+    $sitemap->store('xml', 'sitemap');
+});
 
 // DASHBOARD
 Route::get('/search', [SearchController::class, 'search'])->name('search');
