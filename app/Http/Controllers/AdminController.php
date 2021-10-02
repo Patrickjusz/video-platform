@@ -135,7 +135,7 @@ class AdminController extends Controller
 
             if (env('APP_DEBUG') == false)
             {
-                $response = Http::get('https://haker.edu.pl/generateSitemap');
+                $response = Http::get('https://haker.edu.pl/wideo/generateSitemap');
             }
         }
 
