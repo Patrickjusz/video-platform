@@ -19,8 +19,8 @@
 
                 @isset($video)
                     <video id="main-video" class="video-js vjs-default-skin  vjs-big-play-centered" controls preload="none"
-                        poster="{{ Storage::url($video->thumb) }}" width="640" height="268">
-                        <source src="{{ Storage::url($video->filename) }}" type='video/mp4'>
+                        poster="{{ url(Storage::url($video->thumb)) }}" width="640" height="268">
+                        <source src="{{ url(Storage::url($video->filename)) }}" type='video/mp4'>
                     </video>
                 @endisset
 
