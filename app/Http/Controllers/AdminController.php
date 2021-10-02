@@ -35,7 +35,7 @@ class AdminController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('thumb_html', function ($row) {
-                    $ret = '<img src="' . Storage::url($row->thumb) . '" width="120">';
+                    $ret = '<img src="' . url(Storage::url($row->thumb)) . '" width="120">';
                     return $ret;
                 })
                 ->addColumn('description_short', function ($row) {

@@ -19,8 +19,8 @@
     <main class="row video-container">
         <article class="col-lg-8 col-sm-12" style="background-color: #fff;">
             <video id="main-video" class="video-js vjs-default-skin  vjs-big-play-centered" controls preload="metadata"
-                poster="{{ Storage::url($video->thumb) }}">
-                <source src="{{ Storage::url($video->filename) }}" type='video/mp4'>
+                poster="{{ url(Storage::url($video->thumb)) }}">
+                <source src="{{ url(Storage::url($video->filename)) }}" type='video/mp4'>
             </video>
 
             <h1 class="title">{{ $video->name }}</h1>
@@ -57,7 +57,7 @@
             @forelse ($video->getSimilarVideos(7) as $similarVideo)
                 <a class="row video" href="{{ url($similarVideo->slug) }}">
                     <div class="col-5"
-                        style=" background-image: url('{{ Storage::url($similarVideo->thumb) }}'); ">
+                        style=" background-image: url('{{ url(Storage::url($similarVideo->thumb)) }}'); ">
                         <div class="duration">{{ $similarVideo->getDuration() }}</div>
                     </div>
                     <div class="col-7">
