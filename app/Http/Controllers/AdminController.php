@@ -9,6 +9,7 @@ use DataTables;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Artisan;
 
 
 class AdminController extends Controller
@@ -137,6 +138,8 @@ class AdminController extends Controller
             {
                 $response = Http::get('https://haker.edu.pl/wideo/generateSitemap');
             }
+
+            Artisan::call('cache:clear');
         }
 
         return redirect()->route('admin.index');
