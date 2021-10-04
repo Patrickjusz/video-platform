@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Artisan;
-use Spatie\LaravelImageOptimizer\Facades\ImageOptimizer;
 
 
 class AdminController extends Controller
