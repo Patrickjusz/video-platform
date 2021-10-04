@@ -14,4 +14,4 @@ yarn-error.log
 public/wideos
 public/upload
 public/css
-public/js
+# public/js
