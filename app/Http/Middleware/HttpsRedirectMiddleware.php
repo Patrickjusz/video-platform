@@ -17,7 +17,7 @@ class HttpsRedirectMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (!$request->secure() && !isDev()) {
-            return redirect()->secure($request->getRequestUri());
+            return redirect()->secure($request->fullUrl());
         }
 
         return $next($request);
