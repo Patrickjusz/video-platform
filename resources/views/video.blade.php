@@ -23,7 +23,7 @@
                 <source src="{{ url(Storage::url($video->filename)) }}" type='video/mp4'>
             </video>
 
-            <h1 class="title">{{ $video->name }}</h1>
+            <h1 class="title ">{{ $video->name }}</h1>
 
             {{-- <div class="stats">{{ $video->views }} wyświetleń • 24 sty 2021 </div> --}}
             <div class="stats">{{ shortNumberFormat($video->views_cache) }} wyświetleń •
@@ -61,7 +61,7 @@
                         <div class="duration">{{ $similarVideo->getDuration() }}</div>
                     </div>
                     <div class="col-7">
-                        <b>{{ Str::limit($similarVideo->name, 20) }}</b><br>
+                        <p class="text text-wrap">{{ $similarVideo->name }}</p>
                         {{ shortNumberFormat($similarVideo->views_cache) }} wyświetleń<br>
                         Dodano {{ timeElapsedString($similarVideo->created_at) }}
                     </div>
