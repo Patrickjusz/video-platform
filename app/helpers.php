@@ -111,3 +111,10 @@ if (!function_exists('getNavigation')) {
         ];
     }
 }
+
+if (!function_exists('isDev')) {
+    function isDev()
+    {
+        return App::environment() == 'local';
+    }
+}

@@ -129,13 +129,9 @@ class AdminController extends Controller
             $tagsIds = $request->input('TagsList');
             $video->tags()->sync($tagsIds);
 
-
             Session::flash('status', 'Wideo zostało zaktualizowane');
 
-            // $response = Http::get('http://127.0.0.1:8000/admin/generateSitemap');
-
-            if (env('APP_DEBUG') == false)
-            {
+            if (!isDev()) {
                 $response = Http::get('https://haker.edu.pl/wideo/generateSitemap');
             }
 
