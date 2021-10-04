@@ -32,7 +32,7 @@
             <div class="description">
                 {{-- <img style="float:left; margin:5px; margin-right: 15px;"
                 src="https://haker.edu.pl/wp-content/uploads/2021/01/round-150x150.jpg" width=58> --}}
-                {{ $video->description }}
+                {!! $video->description !!}
             </div>
 
             <div id="tags">

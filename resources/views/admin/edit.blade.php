@@ -1,5 +1,12 @@
 @extends('layouts.admin.app')
 @section('content')
+    <script src="{{ url('js/admin/ckeditor/ckeditor.js') }}"></script>
+    <script>
+        window.onload = function() {
+            CKEDITOR.replace('description');
+        };
+    </script>
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="div col-12">
