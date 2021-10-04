@@ -24,9 +24,12 @@
 
         @forelse ($videos as $video)
             @if (isset($video->slug))
-                <a href="{{ url($video->slug) }}" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 video-box" title="{{ $video->name }}">
-                    <img class="img" src="{{ url(Storage::url($video->thumb)) }}" alt="{{ $video->name }}" title="{{ $video->name }}"/>
-                    <div class="duration">{{ $video->duration ?? $video->getDuration(); }}</div>
+                <a href="{{ url($video->slug) }}" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 video-box"
+                    title="{{ $video->name }}">
+                    <img class="img" src="{{ url(Storage::url($video->thumb)) }}" alt="{{ $video->name }}"
+                        title="{{ $video->name }}" />
+                    <div class="duration">{{ empty($video->duration) ? $video->getDuration() : $video->duration }}
+                    </div>
                     <div class="description">
                         <div class="title text-wrap">{{ $video->name }}</div>
                         <div class="stats">
