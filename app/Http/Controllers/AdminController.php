@@ -120,11 +120,6 @@ class AdminController extends Controller
             }
 
             !empty($video->thumb) ? $toRemove[] = $video->thumb : false;
-
-            // dd(Storage::path($thumbNewPath));
-            //COMPRESS
-            $compressThumbPath = Storage::path('public/' . $thumbNewPath);
-            ImageOptimizer::optimize($compressThumbPath, $compressThumbPath . '_optimize');
         }
 
         if ($video->update($input)) {
