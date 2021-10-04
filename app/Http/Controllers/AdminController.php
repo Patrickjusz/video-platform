@@ -122,10 +122,18 @@ class AdminController extends Controller
             !empty($video->thumb) ? $toRemove[] = $video->thumb : false;
         }
 
+
         if ($video->update($input)) {
             foreach ($toRemove as $file) {
                 Storage::delete('public/' .  $file);
             }
+
+            $videoDuration = $video->getDuration();
+            if (!empty($videoDuration)) {
+                $video->duration = $videoDuration;
+                $video->save();
+            }
+
 
             $tagsIds = $request->input('TagsList');
             $video->tags()->sync($tagsIds);
