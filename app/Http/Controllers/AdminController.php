@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Artisan;
+use Spatie\LaravelImageOptimizer\Facades\ImageOptimizer;
 
 
 class AdminController extends Controller
@@ -119,6 +120,11 @@ class AdminController extends Controller
             }
 
             !empty($video->thumb) ? $toRemove[] = $video->thumb : false;
+
+            // dd(Storage::path($thumbNewPath));
+            //COMPRESS
+            $compressThumbPath = Storage::path('public/' . $thumbNewPath);
+            ImageOptimizer::optimize($compressThumbPath, $compressThumbPath . '_optimize');
         }
 
         if ($video->update($input)) {
