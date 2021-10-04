@@ -28,7 +28,7 @@
                     <img class="img" src="{{ url(Storage::url($video->thumb)) }}" alt="{{ $video->name }}" />
                     <div class="duration">{{ $video->getDuration() }}</div>
                     <div class="description">
-                        <div class="title">{{ Str::limit($video->name, 23) }}</div>
+                        <div class="title text-wrap">{{ $video->name }}</div>
                         <div class="stats">
                             <div class="row">
                                 <div class=" col-12 views">{{ shortNumberFormat($video->views_cache) }} wyświetleń</div>

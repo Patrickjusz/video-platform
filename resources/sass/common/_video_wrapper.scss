@@ -1,3 +1,9 @@
+.text-wrap {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .video-wrapper {
     margin-left: 30px;
     margin-right: 30px;

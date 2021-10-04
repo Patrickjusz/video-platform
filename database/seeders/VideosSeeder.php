@@ -40,7 +40,8 @@ class VideosSeeder extends Seeder
                 'slug' => (Str::random(3) . '-' . Str::random(7) . '-' . Str::random(9)),
                 'views_cache' => random_int(0, 999999),
                 'state' => $state[array_rand($state, 1)],
-                'description' => $description
+                'description' => $description,
+                'seo_description' => htmlToString($description)
             ]);
         }
     }
