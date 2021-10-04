@@ -41,7 +41,7 @@ class AdminController extends Controller
                     return $ret;
                 })
                 ->addColumn('description_short', function ($row) {
-                    $ret = $row->description ? (substr($row->description, 0, 100) . '...') : '';
+                    $ret = $row->seo_description ? (substr($row->seo_description, 0, 100) . '...') : '';
                     return $ret;
                 })
                 ->addColumn('created_at_format', function ($row) {
@@ -99,6 +99,7 @@ class AdminController extends Controller
         $videoFile = $request->file('video_file') ?? false;
         $thumbFile = $request->file('thumb_file') ?? false;
         $toRemove = [];
+        $video->seo_description = htmlToString($video->description);
 
         if (!empty($videoFile)) {
             ini_set('max_execution_time', 7200); //2h

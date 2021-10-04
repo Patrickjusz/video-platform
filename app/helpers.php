@@ -118,3 +118,12 @@ if (!function_exists('isDev')) {
         return App::environment() == 'local';
     }
 }
+
+if (!function_exists('htmlToString')) {
+    function htmlToString($html)
+    {
+        // return  str_replace("&nbsp;", ' ', preg_replace("/\r|\n/", "", strip_tags(substr(($html ?? ''), 0, 157))) . '...');
+
+        return substr(trim(str_replace("&nbsp;", ' ', preg_replace("/\r|\n/", "", strip_tags($html ?? '')))), 0, 157) . '...';
+    }
+}
