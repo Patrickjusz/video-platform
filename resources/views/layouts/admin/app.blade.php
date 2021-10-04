@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex" />
-    
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -74,8 +74,11 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/admin') }}">
+                <a class="navbar-brand" href="{{ route('admin.index') }}">
                     {{ config('app.name', 'Laravel') }}
+                </a>
+                <a href="{{ route('video.index') }}" class="btn btn-primary">
+                    <i class="bi bi-eye"></i>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -114,17 +117,19 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('admin.add') }}"                                                                                              document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('admin.add') }}"
+                                        document.getElementById('logout-form').submit();">
                                         Dodaj wideo
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('admin.editTagsTable') }}"                                                                                              document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('admin.editTagsTable') }}"
+                                        document.getElementById('logout-form').submit();">
                                         Edytuj tagi
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                             document.getElementById('logout-form').submit();">
+                                                                                                                                                 document.getElementById('logout-form').submit();">
                                         {{ __('form_login.logout') }}
                                     </a>
 
