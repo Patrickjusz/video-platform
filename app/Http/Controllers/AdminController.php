@@ -169,6 +169,7 @@ class AdminController extends Controller
             'seo_description' => '',
             'duration' => ''
         ]);
+       
         // $video = [];
         return redirect('edit/' . $video->id);
     }
