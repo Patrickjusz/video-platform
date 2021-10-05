@@ -34,7 +34,7 @@ Route::get('/generateSitemap', function () {
     }
 
     $sitemap->store('xml', 'sitemap');
-});
+})->name('sitemap.generate');
 
 // DASHBOARD
 Route::get('/search', [SearchController::class, 'search'])->name('search');
