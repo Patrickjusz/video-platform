@@ -165,7 +165,8 @@ class AdminController extends Controller
             'views_cache' => 0,
             'slug' => '',
             'description' => '',
-            'state' => 'inactive'
+            'state' => 'inactive',
+            'seo_description' => ''
         ]);
         // $video = [];
         return redirect('edit/' . $video->id);
