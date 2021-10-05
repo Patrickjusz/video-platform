@@ -74,4 +74,7 @@
 
         </aside>
     </main>
+
+    @include('layouts.similar-video')
 @endsection
+

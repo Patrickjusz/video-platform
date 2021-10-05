@@ -60,7 +60,7 @@ if (typeof videojs !== "undefined") {
     });
 
     // player.on("ended", function() {
-    //     alert("Wyświetlam następne wideo");
+    //     // $("#similar-video-modal").show(900);
     // });
 
     // player.on("play", function() {
