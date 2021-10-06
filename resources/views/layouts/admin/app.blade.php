@@ -36,7 +36,7 @@
             if (confirm('Czy chcesz usunąć film o id: ' + id + '?')) {
                 $.ajax({
                     type: 'POST',
-                    url: '/remove',
+                    url: '{{ route('admin.remove') }}',
                     data: {
                         "_token": "{{ csrf_token() }}",
                         "id": id
@@ -54,7 +54,7 @@
             if (confirm('Czy chcesz usunąć tag o id: ' + id + '?')) {
                 $.ajax({
                     type: 'POST',
-                    url: '/remove_tag',
+                    url: '{{ route('admin.removeTag') }}',
                     data: {
                         "_token": "{{ csrf_token() }}",
                         "id": id
@@ -129,7 +129,7 @@
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                 document.getElementById('logout-form').submit();">
+                                                                                                                                                         document.getElementById('logout-form').submit();">
                                         {{ __('form_login.logout') }}
                                     </a>
 
