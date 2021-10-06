@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Artisan;
-
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -167,9 +167,10 @@ class AdminController extends Controller
             'description' => '',
             'state' => 'inactive',
             'seo_description' => '',
-            'duration' => ''
+            'duration' => '',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
-       
+
         // $video = [];
         return redirect('edit/' . $video->id);
     }
