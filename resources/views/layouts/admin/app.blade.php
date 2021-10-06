@@ -43,7 +43,7 @@
                     },
                     success: function(data) {
                         if (data.status == 'success') {
-                            window.location.href = '/{{ ADMIN_PANEL_INDEX_URL }}';
+                            window.location.href = '{{ route('admin.index') }}';
                         }
                     }
                 });
@@ -61,7 +61,7 @@
                     },
                     success: function(data) {
                         if (data.status == 'success') {
-                            window.location.href = '/{{ ADMIN_PANEL_EDIT_TAGS_URL }}';
+                            window.location.href = '{{ route('admin.index') }}';
                         }
                     }
                 });
@@ -129,7 +129,7 @@
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                         document.getElementById('logout-form').submit();">
+                                                                                                                                                                 document.getElementById('logout-form').submit();">
                                         {{ __('form_login.logout') }}
                                     </a>
 
