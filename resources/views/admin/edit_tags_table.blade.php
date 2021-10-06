@@ -30,7 +30,8 @@
                                 <td>{{ $tag->name }}</td>
                                 <td>{{ $tag->slug }}</td>
                                 <td>
-                                    <button onclick="window.location.href = '/{{ ADMIN_PANEL_EDIT_TAGS_URL . $tag->id }}'"
+                                    <button
+                                        onclick="window.location.href = '{{ url(ADMIN_PANEL_EDIT_TAGS_URL . $tag->id) }}'"
                                         class="btn-action btn btn-primary btn-sm"><i class="bi bi-pencil"></i></button>
                                     <button onclick="removeTag({{ $tag->id }});"
                                         class="btn-action btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
