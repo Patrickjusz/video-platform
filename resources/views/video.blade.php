@@ -47,7 +47,7 @@
                 <div>
                     <br>
                     <button class="btn btn-primary"
-                        onclick="window.location.href='{{ ADMIN_PANEL_EDIT_URL . $video->id }}'">Edytuj wideo</button>
+                        onclick="window.location.href='{{ url(ADMIN_PANEL_EDIT_URL . $video->id) }}'">Edytuj wideo</button>
                     <br>
                 </div>
             @endauth
