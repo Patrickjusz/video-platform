@@ -440,7 +440,7 @@ span {
 .video-container .description {
   margin-top: 20px;
   font-size: 1rem;
-  word-break: break-all;
+  word-break: normal;
 }
 
 .video-container .description p {
