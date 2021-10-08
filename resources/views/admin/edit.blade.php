@@ -79,6 +79,15 @@
                     {!! Form::select('state', ['active' => 'active', 'inactive' => 'inactive'], null, ['class' => 'form-control', 'required']) !!}
                 </div>
 
+
+                <hr>
+                <h2>SEO:</h2>
+                <div class="form-group">
+                    {!! Form::label('seo_description', 'Opis pod wyszukiwarki:') !!}
+                    {!! Form::textarea('seo_description', null, ['class' => 'form-control', 'maxlength' => 160, 'rows' => '3']) !!}
+                </div>
+                <hr>
+
                 <div class="form-group">
                     <div class="col-md-4 control-label">
                         {!! Form::label('TagsList', 'Wybierz kategorie:') !!}
