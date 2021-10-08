@@ -82,9 +82,16 @@
 
                 <hr>
                 <h2>SEO:</h2>
-                <div class="form-group">
-                    {!! Form::label('seo_description', 'Opis pod wyszukiwarki:') !!}
-                    {!! Form::textarea('seo_description', null, ['class' => 'form-control', 'maxlength' => 160, 'rows' => '3']) !!}
+                <div>
+                    <div class="form-group">
+                        {!! Form::label('seo_description', 'Opis pod wyszukiwarki:') !!}
+                        {!! Form::textarea('seo_description', null, ['class' => 'form-control', 'maxlength' => 160, 'rows' => '3']) !!}
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::label('seo_keywords', 'Słowa kluczowe:') !!}
+                        {!! Form::text('seo_keywords', null, ['class' => 'form-control', 'required']) !!}
+                    </div>
                 </div>
                 <hr>
 

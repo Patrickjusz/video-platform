@@ -1,6 +1,6 @@
 @section('page_title', $video->name)
 @section('page_description', $video->seo_description)
-@section('page_keywords', 'haker')
+@section('page_keywords', $video->seo_keywords)
 @section('og_image', asset(Storage::url($video->thumb)))
 @section('article_published_time', $video->created_at)
 @section('article_modified_time', $video->updated_at ?? $video->created_at)
@@ -56,7 +56,7 @@
         <aside class="col-lg-4 col-sm-12" id="similar-videos">
             @forelse ($video->getSimilarVideos(7) as $similarVideo)
                 <a class="row video" href="{{ url($similarVideo->slug) }}" title="{{ $similarVideo->name }}"">
-                            <div class="  col-5"
+                                    <div class=" col-5"
                     style=" background-image: url('{{ url(Storage::url($similarVideo->thumb)) }}'); ">
                     <div class="duration">
                         {{ empty($similarVideo->duration) ? $similarVideo->getDuration() : $similarVideo->duration }}
@@ -77,4 +77,3 @@
 
     @include('layouts.similar-video')
 @endsection
-
