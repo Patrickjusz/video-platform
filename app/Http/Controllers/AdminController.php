@@ -99,7 +99,11 @@ class AdminController extends Controller
         $videoFile = $request->file('video_file') ?? false;
         $thumbFile = $request->file('thumb_file') ?? false;
         $toRemove = [];
-        $video->seo_description = htmlToString($request->input('description') ?? $video->description ?? '');
+
+        $seo_description = trim($request->input('seo_description') ?? '');
+        if (empty($seo_description)) {
+            $input['seo_description'] = htmlToString($request->input('description') ?? $video->description ?? '');
+        }
 
         if (!empty($videoFile)) {
             ini_set('max_execution_time', 7200); //2h
@@ -121,7 +125,6 @@ class AdminController extends Controller
 
             !empty($video->thumb) ? $toRemove[] = $video->thumb : false;
         }
-
 
         if ($video->update($input)) {
             foreach ($toRemove as $file) {
