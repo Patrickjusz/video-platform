@@ -105,6 +105,10 @@ class AdminController extends Controller
             $input['seo_description'] = htmlToString($request->input('description') ?? $video->description ?? '');
         }
 
+        if (!empty($input['seo_keywords'])) {
+            $input['seo_keywords']  = trim($input['seo_keywords']);
+        }
+
         if (!empty($videoFile)) {
             ini_set('max_execution_time', 7200); //2h
             $videoNewPath =  $videoFile->store('videos', 'public');
