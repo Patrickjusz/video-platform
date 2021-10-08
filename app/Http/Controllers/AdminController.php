@@ -41,7 +41,8 @@ class AdminController extends Controller
                     return $ret;
                 })
                 ->addColumn('description_short', function ($row) {
-                    $ret = $row->seo_description ? (substr($row->seo_description, 0, 100) . '...') : '';
+                    // $ret = $row->seo_description ? (substr($row->seo_description, 0, 160) . '...') : '';
+                    $ret = $row->seo_description;
                     return $ret;
                 })
                 ->addColumn('created_at_format', function ($row) {
