@@ -26,6 +26,10 @@
                 width: 90%;
                 display: block;
                 margin: 0 auto;
+
+                @include media("<=xs") {
+                    width: 100%;
+                }
             }
         }
 
