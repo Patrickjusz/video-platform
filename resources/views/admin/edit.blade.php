@@ -3,7 +3,10 @@
     <script src="{{ url('js/admin/ckeditor/ckeditor.js') }}"></script>
     <script>
         window.onload = function() {
-            CKEDITOR.replace('description');
+            CKEDITOR.replace('description', {
+                filebrowserUploadUrl: "{{ route('ckeditor.image-upload', ['_token' => csrf_token()]) }}",
+                filebrowserUploadMethod: 'form'
+            });
         };
     </script>
 
