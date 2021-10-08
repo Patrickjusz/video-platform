@@ -18,6 +18,17 @@
             }
         }
 
+        .header-text {
+            font-family: monospace;
+            padding-top: 16px;
+            font-size: 0.9em;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            font-family: inherit;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
         .sidebar-header strong {
             display: block;
         }
