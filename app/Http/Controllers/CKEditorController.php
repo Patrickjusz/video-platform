@@ -13,10 +13,10 @@ class CKEditorController extends Controller
             $fileName = pathinfo($originName, PATHINFO_FILENAME);
             $extension = $request->file('upload')->getClientOriginalExtension();
             $fileName = $fileName . '_' . time() . '.' . $extension;
-            $request->file('upload')->move(public_path('images'), $fileName);
+            $request->file('upload')->move(public_path('upload/images'), $fileName);
             $CKEditorFuncNum = $request->input('CKEditorFuncNum');
-            $url = asset('images/' . $fileName);
-            $msg = 'Image successfully uploaded';
+            $url = asset('upload/images/' . $fileName);
+            $msg = 'Zdjęcie wgrane poprawnie';
             $response = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
 
             @header('Content-type: text/html; charset=utf-8');
