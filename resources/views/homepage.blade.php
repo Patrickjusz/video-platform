@@ -31,7 +31,7 @@
                     <div class="duration">{{ empty($video->duration) ? $video->getDuration() : $video->duration }}
                     </div>
                     <div class="description">
-                        <div class="title text-wrap">{{ $video->name }}</div>
+                        <h2 class="title text-wrap">{{ $video->name }}</h2>
                         <div class="stats">
                             <div class="row">
                                 <div class=" col-12 views">{{ shortNumberFormat($video->views_cache) }} wyświetleń</div>
