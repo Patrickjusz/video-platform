@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CKEditorController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\VideoController;
@@ -60,6 +61,6 @@ Route::get('/kategoria/{slug}', [HomepageController::class, 'tag'])
 Route::get('/{slug}', [VideoController::class, 'index'])
     ->where('slug', '[A-Za-z0-9\-]+');
 
-
+Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.image-upload');
 
 // Route::get('/kategoria/{slug}', [HomepageController::class, 'category'])->name('video.category');
