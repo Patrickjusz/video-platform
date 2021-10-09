@@ -74,7 +74,7 @@ class AdminController extends Controller
     public function edit($id, Request $request)
     {
         $video = Video::findOrFail($id);
-        $categories = Tag::where('state', '=', 'active')->pluck('name', 'id');
+        $categories = Tag::where('state', '=', 'public')->pluck('name', 'id');
         return view('admin.edit', ['video' => $video, 'categories' => $categories]);
     }
 
@@ -173,7 +173,7 @@ class AdminController extends Controller
             'views_cache' => 0,
             'slug' => '',
             'description' => '',
-            'state' => 'inactive',
+            'state' => 'private',
             'seo_description' => '',
             'duration' => '',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -207,7 +207,7 @@ class AdminController extends Controller
      */
     public function editTagsTable(Request $request)
     {
-        $tags = Tag::where('state', 'active')->get();
+        $tags = Tag::where('state', 'public')->get();
         return view('admin.edit_tags_table', ['tags' => $tags]);
     }
 
@@ -276,7 +276,7 @@ class AdminController extends Controller
         $video = Tag::create([
             'name' => '',
             'slug' => '',
-            'state' => 'active',
+            'state' => 'public',
         ]);
         // $video = [];
         return redirect('edit_tags/' . $video->id);

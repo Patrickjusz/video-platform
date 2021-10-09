@@ -14,7 +14,7 @@ class AddStateToTagsTable extends Migration
     public function up()
     {
         Schema::table('tags', function (Blueprint $table) {
-            $table->enum('state', ['active', 'inactive', 'delete']);
+            $table->enum('state', ['public', 'not_public', 'private', 'delete']);
         });
     }
 

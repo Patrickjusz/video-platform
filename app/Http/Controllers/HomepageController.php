@@ -13,7 +13,7 @@ class HomepageController extends Controller
     public function index()
     {
         $videos = Cache::remember('homepage_index', $this->cacheTime, function () {
-            return Video::where('state', 'active')
+            return Video::where('state', 'public')
                 ->where('slug', '!=', '')
                 ->where('filename', '!=', '')
                 ->where('thumb', '!=', '')
@@ -29,7 +29,7 @@ class HomepageController extends Controller
     public function popular()
     {
         $videos = Cache::remember('homepage_popular', $this->cacheTime, function () {
-            return Video::where('state', 'active')
+            return Video::where('state', 'public')
                 ->where('slug', '!=', '')
                 ->where('filename', '!=', '')
                 ->where('thumb', '!=', '')
@@ -38,7 +38,7 @@ class HomepageController extends Controller
         });
 
         $latestVideo  = Cache::remember('homepage_popular_latest_video', $this->cacheTime, function () {
-            return Video::where('state', 'active')->latest()->first();
+            return Video::where('state', 'public')->latest()->first();
         });
 
         return view('homepage', ['videos' => $videos, 'latest_video' => $latestVideo, 'menu' => getNavigationElements()]);

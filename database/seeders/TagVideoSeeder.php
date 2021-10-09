@@ -21,7 +21,7 @@ class TagVideoSeeder extends Seeder
         $tags = Tag::all();
         $tagsIds = $tags->pluck('id')->toArray();
 
-        $videos = Video::where('state', 'active')->get();
+        $videos = Video::where('state', 'public')->get();
         foreach ($videos as $video) {
             $randDate = Carbon::today()->subDays(rand(0, 865));
             DB::table('tag_video')->insert([
