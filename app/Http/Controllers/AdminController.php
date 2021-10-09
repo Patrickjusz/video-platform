@@ -49,6 +49,22 @@ class AdminController extends Controller
                     $ret = date_format($row->created_at, 'd-m-Y');
                     return $ret;
                 })
+                ->addColumn('state', function ($row) {
+                    $ret = $row->state;
+                    switch ($row->state) {
+                        case 'public':
+                            $ret = '<span class="badge badge-primary">Publiczny</span>';
+                            break;
+                        case 'not_public':
+                            $ret = '<span class="badge badge-warning">Niepubliczny</span>';
+                            break;
+                        case 'private':
+                            $ret = '<span class="badge badge-danger">Prywatny</span>';
+                            break;
+                    }
+
+                    return $ret;
+                })
                 ->addColumn('action', function ($row) {
                     $ret = '';
                     if ($row->slug) {
@@ -58,7 +74,7 @@ class AdminController extends Controller
                     $ret .= '<button onclick="removeVideo(' . $row->id . ');" class="btn-action btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>';
                     return $ret;
                 })
-                ->rawColumns(['thumb_html', 'action'])
+                ->rawColumns(['thumb_html', 'action', 'state'])
                 ->make(true);
         }
 
