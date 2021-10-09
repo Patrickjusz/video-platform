@@ -52,7 +52,7 @@ class HomepageController extends Controller
      */
     public function tag($slug, Request $request)
     {
-        $videos = Video::with('tags')->whereHas('tags', function ($query)  use ($slug) {
+        $videos = Video::where('state', 'public')->with('tags')->whereHas('tags', function ($query)  use ($slug) {
             return $query->where('slug', '=', $slug);
         })->get();
 
