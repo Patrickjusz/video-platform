@@ -16,7 +16,7 @@ class VideosSeeder extends Seeder
      */
     public function run()
     {
-        $state = ['active', 'active', 'inactive', 'delete'];
+        $state = ['public', 'not_public', 'private', 'delete'];
         $thumb = ['thumbs/1.jpg', 'thumbs/2.jpg', 'thumbs/3.jpg', 'thumbs/4.jpg'];
         $videos = ['sample1.mp4', 'sample2.mp4', 'sample3.mp4'];
         $description = simplexml_load_file('http://www.lipsum.com/feed/xml?amount=1&what=paras&start=' . RAND(1, 100))->lipsum;

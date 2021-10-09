@@ -10,7 +10,7 @@ class SearchController extends Controller
     public function search(Request $request)
     {
         $term = $request->term;
-        $data = Video::where('state', 'active')
+        $data = Video::where('state', 'public')
             ->where('slug', '!=', '')
             ->where('filename', '!=', '')
             ->where('thumb', '!=', '')

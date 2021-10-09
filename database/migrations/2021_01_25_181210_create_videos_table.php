@@ -22,7 +22,7 @@ class CreateVideosTable extends Migration
             $table->string('tags');
             $table->integer('views_cache');
             $table->string('slug');
-            $table->enum('state', ['active', 'inactive', 'delete']);
+            $table->enum('state', ['public', 'not_public', 'private', 'delete']);
         });
     }
 

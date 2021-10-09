@@ -76,7 +76,7 @@
 
                 <div class="form-group">
                     {!! Form::label('state', 'Status') !!}
-                    {!! Form::select('state', ['active' => 'active', 'inactive' => 'inactive'], null, ['class' => 'form-control', 'required']) !!}
+                    {!! Form::select('state', ['public' => 'Publiczny', 'not_public' => 'Niepubliczny', 'private' => 'Prywatny'], null, ['class' => 'form-control', 'required']) !!}
                 </div>
 
 

@@ -12,7 +12,10 @@ class VideoController extends Controller
     public function index($slug, Request $request)
     {
         if (!empty($slug)) {
-            $video = Video::where('state', 'active')->where('slug', $slug)->first();
+            $video = Video::where(function ($query) {
+                return $query->where('state', 'public')
+                    ->orWhere('state', 'not_public');
+            })->where('slug', $slug)->first();
 
             if ($video) {
                 $view = new View(['ip' => $request->ip()]);

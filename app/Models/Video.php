@@ -54,7 +54,7 @@ class Video extends Model
         // return false;
 
 
-        return Video::inRandomOrder()->where('state', 'active')->limit($limit)->get();
+        return Video::inRandomOrder()->where('state', 'public')->limit($limit)->get();
     }
 
 
