@@ -24,14 +24,10 @@
             </video>
 
             <h1 class="title ">{{ $video->name }}</h1>
-
-            {{-- <div class="stats">{{ $video->views }} wyświetleń • 24 sty 2021 </div> --}}
             <div class="stats">{{ shortNumberFormat($video->views_cache) }} wyświetleń •
                 {{ timeElapsedString($video->created_at) }} </div>
 
             <div class="description">
-                {{-- <img style="float:left; margin:5px; margin-right: 15px;"
-                src="https://haker.edu.pl/wp-content/uploads/2021/01/round-150x150.jpg" width=58> --}}
                 {!! $video->description !!}
             </div>
 
@@ -56,7 +52,7 @@
         <aside class="col-lg-4 col-sm-12" id="similar-videos">
             @forelse ($video->getSimilarVideos(7) as $similarVideo)
                 <a class="row video" href="{{ url($similarVideo->slug) }}" title="{{ $similarVideo->name }}"">
-                                    <div class=" col-5"
+                                        <div class="  col-5"
                     style=" background-image: url('{{ url(Storage::url($similarVideo->thumb)) }}'); ">
                     <div class="duration">
                         {{ empty($similarVideo->duration) ? $similarVideo->getDuration() : $similarVideo->duration }}

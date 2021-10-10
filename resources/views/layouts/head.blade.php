@@ -21,17 +21,18 @@
         <meta name="robots" content="index, follow">
     @endif
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    {{-- <meta http-equiv="last-modified" content="@yield('article_modified_time')" /> --}}
-
-    {{-- http://help.dottoro.com/lhquobhe.php --}}
 
     <title>
-        @yield('page_title') | haker.edu.pl
+        @if ($title ?? '')
+            {{ $title }} | Haker Film
+        @else
+            @yield('page_title') | Haker Film
+        @endif
     </title>
 
     <meta name="description" content="@yield('page_description')" />
     <link rel="canonical" href="{{ url()->current() }}" />
-    <meta name="keywords" content="@yield('page_keywords')">
+    <meta name="keywords" content="haker film, @yield('page_keywords')">
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"

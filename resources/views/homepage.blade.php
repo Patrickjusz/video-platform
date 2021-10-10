@@ -1,8 +1,15 @@
-@section('page_title', 'Haker Film')
-@section('page_description', 'Haker film to serwis oferujący darmowe filmy o hakerach i narzędziach takich jak Kali
-    Linux. Znajdziesz tutaj filmy o hakerach i ich programy hakerskie.')
-@section('page_keywords', 'haker film, hakerzy film, filmy haker, filmy o hakerach, wideo haker, kali linux, haker edu
-    wideo')
+@if (Route::is('video.index'))
+    @section('page_title', 'Najnowsze')
+@endif
+
+@if (Route::is('video.popular'))
+    @section('page_title', 'Popularne')
+@endif
+
+@section('page_description',
+    'Haker film to serwis oferujący darmowe filmy o hakerach i narzędziach takich jak Kali Linux. Znajdziesz tutaj filmy o hakerach i ich programy hakerskie.',)
+@section('page_keywords',
+    'haker film, hakerzy film, filmy haker, filmy o hakerach, wideo haker, kali linux, haker edu wideo',)
 @section('og_image', '')
 @section('article_published_time', $latest_video->created_at ?? '')
 @section('article_modified_time', $latest_video->updated_at ?? $latest_video->created_at)
