@@ -51,7 +51,7 @@
 
         <aside class="col-lg-4 col-sm-12" id="similar-videos">
             @forelse ($video->getSimilarVideos(7) as $similarVideo)
-                <a class="row video" href="{{ url($similarVideo->slug) }}" title="{{ $similarVideo->name }}"">
+                <a class="row video" href="{{ url($similarVideo->slug) }}" title="{{ $similarVideo->name }}">
                                         <div class="  col-5"
                     style=" background-image: url('{{ url(Storage::url($similarVideo->thumb)) }}'); ">
                     <div class="duration">
