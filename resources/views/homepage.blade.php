@@ -1,9 +1,9 @@
 @if (Route::is('video.index'))
-    @section('page_title', 'Najnowsze')
+    @section('page_title', 'Najnowsze wideo')
 @endif
 
 @if (Route::is('video.popular'))
-    @section('page_title', 'Popularne')
+    @section('page_title', 'Popularne wideo')
 @endif
 
 @section('page_description',
