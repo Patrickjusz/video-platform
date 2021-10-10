@@ -22,13 +22,13 @@
     @endif
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <title>
-        @if ($title ?? '')
-            {{ $title }} | Haker Film
-        @else
-            @yield('page_title') | Haker Film
-        @endif
-    </title>
+
+    @if ($title ?? '')
+        <title>{{ $title }} | Haker Film</title>
+    @else
+        <title>@yield('page_title') | Haker Film</title>
+    @endif
+
 
     <meta name="description" content="@yield('page_description')" />
     <link rel="canonical" href="{{ url()->current() }}" />
@@ -48,7 +48,11 @@
 
     <meta property="og:locale" content="pl_PL" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="@yield('page_title') | haker.edu.pl" />
+    @if ($title ?? '')
+        <meta property="og:title" content="{{ $title }} | haker.edu.pl" />
+    @else
+        <meta property="og:title" content="@yield('page_title') | haker.edu.pl" />
+    @endif
     <meta property="og:description" content="@yield('page_description')" />
     <meta property="og:url" content="{{ url()->current() }}" />
     <meta property="og:image" content="@yield('og_image')" />
