@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name='robots' content='noindex, follow' />
-    
+
     <title>Nie znaleziono strony</title>
 
     <!-- Fonts -->
@@ -548,7 +548,10 @@
                     404 </div>
 
                 <div class="ml-4 text-lg text-gray-500 uppercase tracking-wider">
-                    Nie znaleziono strony </div>
+                    Nie znaleziono strony
+                    <br>
+                    <a href="{{ url('/') }}" style="color:yellow; text-decoration: underline;">Idź do strony głównej </a>
+                </div>
             </div>
         </div>
     </div>
