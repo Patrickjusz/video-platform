@@ -41,7 +41,6 @@ Route::get('/generateSitemap', function () {
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 Auth::routes(['register' => false]);
-Auth::routes();
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
 Route::get('/edit/{id}', [App\Http\Controllers\AdminController::class, 'edit'])->name('admin.edit');
 Route::put('/edit/{id}', [App\Http\Controllers\AdminController::class, 'update'])->name('admin.update');
