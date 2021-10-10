@@ -6,9 +6,9 @@
         </a>
         <div>
             @if (Route::current()->getName() == 'video.popular' || Route::current()->getName() == 'video.index')
-                <h1 class="header-text"><a href="{{ route('video.index') }}">Haker Wideo</a></h1>
+                <h1 class="header-text"><a href="{{ route('video.index') }}">Haker Film</a></h1>
             @else
-                <p class="header-text"><a href="{{ route('video.index') }}">Haker Wideo</a></p>
+                <p class="header-text"><a href="{{ route('video.index') }}">Haker Film</a></p>
             @endif
         </div>
 
