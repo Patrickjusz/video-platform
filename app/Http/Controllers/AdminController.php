@@ -53,7 +53,7 @@ class AdminController extends Controller
                     $ret = $row->state;
                     switch ($row->state) {
                         case 'public':
-                            $ret = '<span class="badge badge-primary">Publiczny</span>';
+                            $ret = '<span class="badge badge-success">Publiczny</span>';
                             break;
                         case 'not_public':
                             $ret = '<span class="badge badge-warning">Niepubliczny</span>';
