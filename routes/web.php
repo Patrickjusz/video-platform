@@ -22,7 +22,7 @@ Route::get('/generateSitemap', function () {
     //https://github.com/Laravelium/laravel-sitemap/wiki/Generate-sitemap
     $video = Video::where('state', 'public')->get();
     $latestVideo = Video::where('state', 'public')->latest()->first();
-    $lastMod = ($latestVideo->updated_at ?? $latestVideo->created_at);
+    $lastMod = ($latestVideo->created_at ?? $latestVideo->updated_at);
 
     $sitemap = App::make("sitemap");
     $sitemap->add(env('APP_URL'), $lastMod, 1, 'daily');
