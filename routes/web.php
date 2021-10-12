@@ -30,7 +30,7 @@ Route::get('/generateSitemap', function () {
 
     foreach ($video as $video) {
         $videoUrl = env('APP_URL') . '/' . $video->slug;
-        $lastMod = ($video->updated_at ?? $video->created_at);
+        $lastMod = ($video->created_at ?? $video->updated_at);
         $sitemap->add($videoUrl, $lastMod, 1, 'monthly');
     }
 
