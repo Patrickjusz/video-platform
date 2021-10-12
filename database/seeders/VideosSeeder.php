@@ -21,7 +21,7 @@ class VideosSeeder extends Seeder
         $videos = ['sample1.mp4', 'sample2.mp4', 'sample3.mp4'];
         $description = simplexml_load_file('http://www.lipsum.com/feed/xml?amount=1&what=paras&start=' . RAND(1, 100))->lipsum;
 
-        foreach (range(0, 60) as $i) {
+        foreach (range(0, 100) as $i) {
             $name = Str::random(40);
             $nameLenght = strlen($name);
             for ($i = 0; $i < $nameLenght; $i++) {
@@ -33,7 +33,7 @@ class VideosSeeder extends Seeder
             $name = trim($name);
 
             DB::table('videos')->insert([
-                'created_at' => Carbon::today()->subDays(rand(0, 865)),
+                'created_at' => Carbon::today()->subDays(rand(0, 1265)),
                 'name' => $name,
                 'filename' => $videos[array_rand($videos, 1)],
                 'thumb' => $thumb[array_rand($thumb, 1)],

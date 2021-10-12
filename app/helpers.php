@@ -90,9 +90,51 @@ if (!function_exists('timeElapsedString')) {
             }
         }
 
-
         if (!$full) $string = array_slice($string, 0, 1);
-        return $string ? implode(', ', $string) . ' temu' : 'dzisiaj';
+
+        $typeTag = key($string); //d/w/m/y
+        $ret = explode(' ', implode(', ', $string));
+        switch ($typeTag) {
+            case 'y':
+                if ($ret[0] <= 1) {
+                    $ret[1] = 'rok';
+                } else if ($ret[0] > 1 && $ret[0] < 5) {
+                    $ret[1] = 'lata';
+                } else if ($ret[0] > 4) {
+                    $ret[1] = 'lat';
+                }
+                break;
+            case 'm':
+                if ($ret[0] == 1) {
+                    $ret[1] = 'miesiąc';
+                } else if ($ret[0] > 1 && $ret[0] < 5) {
+                    $ret[1] = 'miesiące';
+                } else if ($ret[0] > 4) {
+                    $ret[1] = 'miesięcy';
+                }
+                break;
+            case 'w':
+                if ($ret[0] <= 1) {
+                    $ret[1] = 'tydzień';
+                } else {
+                    $ret[1] = 'tygodnie';
+                }
+                break;
+            case 'd':
+                if ($ret[0] <= 1) {
+                    $ret[1] = 'dzień';
+                } else {
+                    $ret[1] = 'dni';
+                }
+                break;
+            default:
+        }
+
+        if ($ret[0] == "") {
+            unset($ret[0]);
+        }
+
+        return $ret ? implode(' ', $ret) . ' temu' : 'dzisiaj';
     }
 }
 
