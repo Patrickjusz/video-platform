@@ -10,6 +10,13 @@ class HomepageController extends Controller
 {
     private $cacheTime = 7200;
 
+    function __construct()
+    {
+        if (isDev()) {
+            $cacheTime = 0;
+        }
+    }
+
     public function index()
     {
         $videos = Cache::remember('homepage_index', $this->cacheTime, function () {
