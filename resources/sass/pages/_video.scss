@@ -117,6 +117,12 @@
             }
         }
 
+        @include media("<=md") {
+            margin-top: 50px;
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+
         @include media("<=sm") {
             margin: 30px 15px;
             overflow: hidden;
