@@ -40,7 +40,7 @@ Route::get('/generateSitemap', function () {
 // DASHBOARD
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
-// Auth::routes(['register' => false, 'reset' => false, 'login' => 'false']);
+Auth::routes(['register' => false, 'reset' => false]);
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
 Route::get('/edit/{id}', [App\Http\Controllers\AdminController::class, 'edit'])->name('admin.edit');
 Route::put('/edit/{id}', [App\Http\Controllers\AdminController::class, 'update'])->name('admin.update');
