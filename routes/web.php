@@ -39,8 +39,7 @@ Route::get('/generateSitemap', function () {
 
 
 Route::get('/generateEclapsedTime', function () {
-
-    $video = Video::where('state', 'public')->orderByDesc('created_at')->get();
+    $video = Video::where('state', '!=', 'delete')->orderByDesc('created_at')->get();
 
     foreach ($video as $video) {
         $video->eclapsed_time = timeElapsedString($video->created_at);
