@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Artisan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,5 +20,7 @@ class DatabaseSeeder extends Seeder
             TagVideoSeeder::class,
             UsersSeeder::class,
         ]);
+
+        Artisan::call('cache:clear');
     }
 }
