@@ -68,13 +68,6 @@ if (!function_exists('timeElapsedString')) {
         $diff->w = floor($diff->d / 7);
         $diff->d -= $diff->w * 7;
 
-        // $singleForm = [
-        //     'y' => 'lat',
-        //     'm' => 'miesiąc',
-        //     'w' => 'tydzień',
-        //     'd' => 'dzień'
-        // ];
-
         $string = [
             'y' => 'lata',
             'm' => 'miesiące',
