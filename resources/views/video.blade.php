@@ -25,7 +25,7 @@
 
             <h1 class="title ">{{ $video->name }}</h1>
             <div class="stats">{{ shortNumberFormat($video->views_cache) }} wyświetleń •
-                {{ timeElapsedString($video->created_at) }} </div>
+                {{ $video->eclapsed_time }} </div>
 
             <div class="description">
                 {!! $video->description !!}
@@ -52,16 +52,16 @@
         <aside class="col-lg-4 col-sm-12" id="similar-videos">
             @forelse ($video->getSimilarVideos(7) as $similarVideo)
                 <a class="row video" href="{{ url($similarVideo->slug) }}" title="{{ $similarVideo->name }}">
-                                        <div class="  col-5"
-                    style=" background-image: url('{{ url(Storage::url($similarVideo->thumb)) }}'); ">
-                    <div class="duration">
-                        {{ empty($similarVideo->duration) ? $similarVideo->getDuration() : $similarVideo->duration }}
-                    </div>
+                    <div class="  col-5"
+                        style=" background-image: url('{{ url(Storage::url($similarVideo->thumb)) }}'); ">
+                        <div class="duration">
+                            {{ empty($similarVideo->duration) ? $similarVideo->getDuration() : $similarVideo->duration }}
+                        </div>
                     </div>
                     <div class="col-7">
                         <p class="text text-wrap">{{ $similarVideo->name }}</p>
                         {{ shortNumberFormat($similarVideo->views_cache) }} wyświetleń<br>
-                        Dodano {{ timeElapsedString($similarVideo->created_at) }}
+                        Dodano {{ $similarVideo->eclapsed_time }}
                     </div>
                 </a>
             @empty

@@ -147,6 +147,8 @@ class AdminController extends Controller
             !empty($video->thumb) ? $toRemove[] = $video->thumb : false;
         }
 
+        $video->eclapsed_time = timeElapsedString($video->created_at);
+
         if ($video->update($input)) {
             foreach ($toRemove as $file) {
                 Storage::delete('public/' .  $file);

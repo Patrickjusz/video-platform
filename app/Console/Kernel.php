@@ -27,6 +27,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->command('count:views')->everyTwoHours();
         $schedule->command('sitemap:generate')->daily();
+        $schedule->command('eclapsed_time:generate')->dailyAt('00:05');
     }
 
     /**
