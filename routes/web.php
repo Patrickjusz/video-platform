@@ -20,7 +20,7 @@ use App\Models\Video;
 
 Route::get('/generateSitemap', function () {
     //https://github.com/Laravelium/laravel-sitemap/wiki/Generate-sitemap
-    $video = Video::where('state', 'public')->get();
+    $video = Video::where('state', 'public')->orderByDesc('created_at')->get();
     $latestVideo = Video::where('state', 'public')->latest()->first();
     $lastMod = ($latestVideo->created_at ?? $latestVideo->updated_at);
 
