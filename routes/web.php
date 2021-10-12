@@ -37,6 +37,18 @@ Route::get('/generateSitemap', function () {
     $sitemap->store('xml', 'sitemap');
 })->name('sitemap.generate');
 
+
+Route::get('/generateEclapsedTime', function () {
+
+    $video = Video::where('state', 'public')->orderByDesc('created_at')->get();
+
+    foreach ($video as $video) {
+        $video->eclapsed_time = timeElapsedString($video->created_at);
+        $video->save();
+    }
+})->name('eclapsed_time.generate');
+
+
 // DASHBOARD
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
