@@ -25,6 +25,27 @@ if (!function_exists('shortNumberFormat')) {
      */
     function shortNumberFormat($n)
     {
+        $viewsText = '';
+        switch ($n) {
+            case 0:
+                $viewsText = 'wyświetleń';
+                break;
+            case 1:
+                $viewsText = 'wyświetlenie';
+                break;
+            case 2:
+                $viewsText = 'wyświetlenia';
+                break;
+            case 3:
+                $viewsText = 'wyświetlenia';
+                break;
+            case 4:
+                $viewsText = 'wyświetlenia';
+                break;
+            default:
+                $viewsText = 'wyświetleń';
+        }
+
         if ($n >= 0 && $n < 1000) {
             // 1 - 999
             $n_format = floor($n);
@@ -47,7 +68,7 @@ if (!function_exists('shortNumberFormat')) {
             $suffix = 'bln';
         }
 
-        return !empty($n_format . $suffix) ? $n_format . $suffix : 0;
+        return (!empty($n_format . $suffix) ? $n_format . $suffix : 0) . ' ' . $viewsText;
     }
 }
 

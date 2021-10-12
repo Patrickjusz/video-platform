@@ -56,7 +56,7 @@
                         <h2 class="title text-wrap">{{ $video->name }}</h2>
                         <div class="stats">
                             <div class="row">
-                                <div class=" col-12 views">{{ shortNumberFormat($video->views_cache) }} wyświetleń</div>
+                                <div class=" col-12 views">{{ shortNumberFormat($video->views_cache) }}</div>
                                 <div class="col-12 date">Dodano {{ $video->eclapsed_time }}</div>
                             </div>
                         </div>
