@@ -46,7 +46,7 @@ class CountViews extends Command
 
         foreach ($videos as $video) {
             $res = Video::where('id', $video->video_id)
-                ->update(['views_cache' => $video->views]);
+                ->update(['views_cache' => $video->views, 'views_cache_text' =>  shortNumberFormat($video->views)]);
         }
 
         $this->info('Views cache updated.');

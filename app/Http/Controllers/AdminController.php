@@ -194,7 +194,9 @@ class AdminController extends Controller
             'state' => 'private',
             'seo_description' => '',
             'duration' => '',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'elapsed_time' => 'Dzisiaj',
+            'views_cache_text' => '0 wyświetleń'
         ]);
 
         // $video = [];
