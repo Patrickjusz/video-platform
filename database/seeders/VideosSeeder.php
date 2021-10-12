@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use App\Models\Video;
 
 class VideosSeeder extends Seeder
 {
@@ -43,6 +44,13 @@ class VideosSeeder extends Seeder
                 'description' => $description,
                 'seo_description' => htmlToString($description)
             ]);
+        }
+
+        $video = Video::where('state', '!=', 'delete')->orderByDesc('created_at')->get();
+
+        foreach ($video as $video) {
+            $video->eclapsed_time = timeElapsedString($video->created_at);
+            $video->save();
         }
     }
 }
