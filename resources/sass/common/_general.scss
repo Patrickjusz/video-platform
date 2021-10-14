@@ -40,6 +40,7 @@ span {
 .wrapper {
     display: flex;
     align-items: stretch;
+    overflow-x: hidden;
     #content {
         width: 100%;
         padding: 20px;
