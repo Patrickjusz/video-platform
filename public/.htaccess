@@ -7,6 +7,12 @@
     RewriteCond %{HTTP_REFERER} !^https://haker.edu.pl/wideo/.*$ [NC]
     RewriteCond %{HTTP_REFERER} !^https://haker.edu.pl/wideo/.*$ [NC]
     RewriteRule .(mp4|avi|webm|ogv)$ - [F]`
+    
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ https://%1/wideo/$1 [R=301,L]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
