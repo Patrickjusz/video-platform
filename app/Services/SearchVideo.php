@@ -11,7 +11,14 @@ interface Search
 
 class SearchVideo implements Search
 {
-    public static function search(string $term): array
+    /**
+     * Search video by term
+     * 
+     * @param  string $term
+     * @param  int $limit
+     * @return array
+     */
+    public static function search(string $term, int $limit = 10): array
     {
         $results = [];
 
@@ -23,7 +30,7 @@ class SearchVideo implements Search
                 $query->where('name', 'LIKE', '%' . $term . '%')
                     ->orWhere('description', 'LIKE', '%' . $term . '%');
             })
-            ->take(10)
+            ->take($limit)
             ->orderByDesc('views_cache')
             ->get();
 
