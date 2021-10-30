@@ -7,7 +7,7 @@ if (!function_exists('convertToPolishMonth')) {
      * @return string
      * Convert ENG months name to PL
      */
-    function convertToPolishMonth($str = '')
+    function convertToPolishMonth(string $str = ''): string
     {
         $m_en = array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec');
         $m_pol = array('Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze', 'Lip', 'Sie', 'Wrz', 'Paź', 'Lis', 'Gru');
@@ -19,11 +19,11 @@ if (!function_exists('convertToPolishMonth')) {
 
 if (!function_exists('shortNumberFormat')) {
     /**
-     * @param $n
+     * @param int $n
      * @return string
      * Use to convert large positive numbers in to short form like 1K+, 100K+, 199K+, 1M+, 10M+, 1B+ etc
      */
-    function shortNumberFormat($n)
+    function shortNumberFormat(int $n): string
     {
         $viewsText = '';
         switch ($n) {
@@ -75,12 +75,15 @@ if (!function_exists('shortNumberFormat')) {
 
 if (!function_exists('timeElapsedString')) {
     /**
-     * @param $datetime
-     * @param $full
+     * Convert datetime "how much time has passed" (Polish format)
+     * 
+     * @param DateTime $datetime
+     * @param bool $full
+     * 
      * @return string
      * Convert date to time ago (polish)
      */
-    function timeElapsedString($datetime, $full = false)
+    function timeElapsedString($datetime, $full = false): string
     {
         $now = new DateTime;
         $ago = new DateTime($datetime);
@@ -169,7 +172,12 @@ if (!function_exists('getNavigation')) {
 }
 
 if (!function_exists('isDev')) {
-    function isDev()
+    /**
+     * Check developer mode
+     * 
+     * @return bool
+     */
+    function isDev(): bool
     {
         return App::environment() == 'local';
     }
@@ -178,8 +186,6 @@ if (!function_exists('isDev')) {
 if (!function_exists('htmlToString')) {
     function htmlToString($html)
     {
-        // return  str_replace("&nbsp;", ' ', preg_replace("/\r|\n/", "", strip_tags(substr(($html ?? ''), 0, 157))) . '...');
-
         return substr(trim(str_replace("&nbsp;", ' ', preg_replace("/\r|\n/", "", strip_tags($html ?? '')))), 0, 157) . '...';
     }
 }
