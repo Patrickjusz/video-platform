@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Artisan;
 use Carbon\Carbon;
+use App\Http\Requests\UpdateVideoReqeuest;
 
 class AdminController extends Controller
 {
@@ -96,21 +97,12 @@ class AdminController extends Controller
 
 
     /**
-     * Show edit video form
+     * Update video model
      *
      * @return void
      */
-    public function update($id, Request $request)
+    public function update($id, UpdateVideoReqeuest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|max:255',
-            'views_cache' => 'required|integer',
-            'slug' => 'unique:videos,slug,' . $id . '|required',
-            'state' => 'required',
-            'description' => 'required',
-        ]);
-
-
         $video = Video::findOrFail($id);
         $input = $request->all();
         $videoFile = $request->file('video_file') ?? false;
