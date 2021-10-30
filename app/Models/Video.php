@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use getID3;
-use Illuminate\Support\Facades\Storage;
 
 class Video extends Model
 {
@@ -29,7 +28,7 @@ class Video extends Model
     public function getSimilarVideos(int $limit = 10)
     {
         // $videoId = $this->getKey('id');
-        
+
         /**
          * Alghoritm:
          * -Get tags
@@ -78,5 +77,19 @@ class Video extends Model
     public function getTagsListAttribute()
     {
         return $this->tags->pluck('id')->all();
+    }
+
+    /**
+     * Get public or not_public video model by slug
+     * 
+     * @param  string $slug
+     * @return \App\Models\Video;
+     */
+    public static function getVisibleVideoBySlug(string $slug): Video
+    {
+        return self::where(function ($query) {
+            return $query->where('state', 'public')
+                ->orWhere('state', 'not_public');
+        })->where('slug', $slug)->first();
     }
 }
