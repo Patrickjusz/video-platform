@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Artisan;
 use Carbon\Carbon;
 use App\Http\Requests\UpdateVideoReqeuest;
+use App\Services\Sitemap;
 
 class AdminController extends Controller
 {
@@ -160,9 +161,7 @@ class AdminController extends Controller
 
             Session::flash('status', 'Wideo zostało zaktualizowane');
 
-            if (!isDev()) {
-                $response = Http::get('https://haker.edu.pl/wideo/generateSitemap');
-            }
+            Sitemap::create();
 
             Artisan::call('cache:clear');
         }

@@ -6,6 +6,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Video;
+use App\Services\Sitemap;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,23 +19,9 @@ use App\Models\Video;
 |
 */
 
+// TOOLS
 Route::get('/generateSitemap', function () {
-    //https://github.com/Laravelium/laravel-sitemap/wiki/Generate-sitemap
-    $video = Video::where('state', 'public')->orderByDesc('created_at')->get();
-    $latestVideo = Video::where('state', 'public')->latest()->first();
-    $lastMod = ($latestVideo->created_at ?? $latestVideo->updated_at);
-
-    $sitemap = App::make("sitemap");
-    $sitemap->add(env('APP_URL'), $lastMod, 1, 'daily');
-    $sitemap->add(env('APP_URL') . '/popularne', $lastMod, 1, 'daily');
-
-    foreach ($video as $video) {
-        $videoUrl = env('APP_URL') . '/' . $video->slug;
-        $lastMod = ($video->created_at ?? $video->updated_at);
-        $sitemap->add($videoUrl, $lastMod, 1, 'monthly');
-    }
-
-    $sitemap->store('xml', 'sitemap');
+    Sitemap::create();
 })->name('sitemap.generate');
 
 
@@ -49,7 +36,6 @@ Route::get('/generateEclapsedTime', function () {
 
 
 // DASHBOARD
-Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 Auth::routes(['register' => false, 'reset' => false]);
 
@@ -76,5 +62,3 @@ Route::get('/{slug}', [VideoController::class, 'index'])
     ->where('slug', '[A-Za-z0-9\-]+');
 
 Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.image-upload');
-
-// Route::get('/kategoria/{slug}', [HomepageController::class, 'category'])->name('video.category');

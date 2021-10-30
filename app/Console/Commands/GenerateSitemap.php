@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
+use App\Services\Sitemap;
 
 class GenerateSitemap extends Command
 {
@@ -38,7 +39,7 @@ class GenerateSitemap extends Command
      */
     public function handle()
     {
-        $response = Http::get(route('sitemap.generate'));
+        Sitemap::create();
         return 0;
     }
 }
