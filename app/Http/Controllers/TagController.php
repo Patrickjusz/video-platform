@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\UpdateTagRequest;
 
 class TagController extends Controller
 {
@@ -65,13 +66,8 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateTagRequest $request, $id)
     {
-        $validated = $request->validate([
-            'name' => 'unique:tags,name,' . $id . '|required|max:255',
-            'slug' => 'unique:tags,slug,' . $id . '|required|max:255'
-        ]);
-
         $tag = Tag::findOrFail($id);
         $input = $request->all();
 
