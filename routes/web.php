@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\CKEditorController;
 use App\Http\Controllers\HomepageController;
-use App\Http\Controllers\SearchController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Video;

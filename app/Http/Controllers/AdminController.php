@@ -8,7 +8,6 @@ use App\Models\Video;
 use DataTables;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Artisan;
 use Carbon\Carbon;
 use App\Http\Requests\UpdateVideoReqeuest;
