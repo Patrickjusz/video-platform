@@ -52,16 +52,20 @@ Route::get('/generateEclapsedTime', function () {
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 Auth::routes(['register' => false, 'reset' => false]);
+
+//AdminController
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
 Route::get('/edit/{id}', [App\Http\Controllers\AdminController::class, 'edit'])->name('admin.edit');
 Route::put('/edit/{id}', [App\Http\Controllers\AdminController::class, 'update'])->name('admin.update');
 Route::get('/add', [App\Http\Controllers\AdminController::class, 'add'])->name('admin.add');
 Route::post('/remove', [App\Http\Controllers\AdminController::class, 'remove'])->name('admin.remove');
-Route::get('/edit_tags', [App\Http\Controllers\AdminController::class, 'editTagsTable'])->name('admin.editTagsTable');
-Route::get('/edit_tags/{id}', [App\Http\Controllers\AdminController::class, 'editTag'])->name('admin.editTag');
-Route::put('/edit_tags/{id}', [App\Http\Controllers\AdminController::class, 'updateTag'])->name('admin.updateTag');
-Route::post('/remove_tag', [App\Http\Controllers\AdminController::class, 'removeTag'])->name('admin.removeTag');
-Route::get('/add_tag', [App\Http\Controllers\AdminController::class, 'addTag'])->name('admin.addTag');
+
+// TagController
+Route::get('/edit_tags', [App\Http\Controllers\TagController::class, 'index'])->name('tag.index');
+Route::get('/edit_tags/{id}', [App\Http\Controllers\TagController::class, 'edit'])->name('tag.edit');
+Route::put('/edit_tags/{id}', [App\Http\Controllers\TagController::class, 'update'])->name('tag.update');
+Route::post('/remove_tag', [App\Http\Controllers\TagController::class, 'destroy'])->name('tag.destroy');
+Route::get('/add_tag', [App\Http\Controllers\TagController::class, 'store'])->name('tag.store');
 
 // FRONTEND
 Route::get('/', [HomepageController::class, 'index'])->name('video.index');

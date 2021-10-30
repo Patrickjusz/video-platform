@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="col-12 mb-10">
-                    <a href="{{ route('admin.addTag') }}" class="btn btn-primary mb-3">Dodaj tag</a>
+                    <a href="{{ route('tag.store') }}" class="btn btn-primary mb-3">Dodaj tag</a>
                 </div>
 
                 @if (Session::has('status'))

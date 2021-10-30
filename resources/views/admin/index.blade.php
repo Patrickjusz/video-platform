@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-12 mb-10">
                 <a href="{{ route('admin.add') }}" class="btn btn-primary mb-3">Dodaj wideo</a>
-                <a href="{{ route('admin.editTagsTable') }}" class="btn btn-primary mb-3">Edytuj tagi</a>
+                <a href="{{ route('tag.index') }}" class="btn btn-primary mb-3">Edytuj tagi</a>
             </div>
             <div class="col-12">
 

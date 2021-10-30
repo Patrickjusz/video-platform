@@ -54,7 +54,7 @@
             if (confirm('Czy chcesz usunąć tag o id: ' + id + '?')) {
                 $.ajax({
                     type: 'POST',
-                    url: '{{ route('admin.removeTag') }}',
+                    url: '{{ route('tag.destroy') }}',
                     data: {
                         "_token": "{{ csrf_token() }}",
                         "id": id
@@ -122,7 +122,7 @@
                                         Dodaj wideo
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('admin.editTagsTable') }}"
+                                    <a class="dropdown-item" href="{{ route('tag.index') }}"
                                         document.getElementById('logout-form').submit();">
                                         Edytuj tagi
                                     </a>

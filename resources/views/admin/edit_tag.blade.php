@@ -14,7 +14,7 @@
                 @endif
             </div>
             <div class="col-12">
-                {!! Form::model($tag, ['route' => ['admin.updateTag', $tag->id], 'method' => 'put']) !!}
+                {!! Form::model($tag, ['route' => ['tag.update', $tag->id], 'method' => 'put']) !!}
                 {!! Form::token() !!}
                 <div class="form-group">
                     {!! Form::label('name', 'Nazwa tagu') !!}
