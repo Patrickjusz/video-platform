@@ -3,16 +3,16 @@
 
 if (!function_exists('convertToPolishMonth')) {
     /**
-     * @param $str
+     * @param string $str
      * @return string
      * Convert ENG months name to PL
      */
     function convertToPolishMonth(string $str = ''): string
     {
-        $m_en = array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec');
-        $m_pol = array('Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze', 'Lip', 'Sie', 'Wrz', 'Paź', 'Lis', 'Gru');
+        $monthsEnglish = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        $monthsPolish = ['Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze', 'Lip', 'Sie', 'Wrz', 'Paź', 'Lis', 'Gru'];
 
-        return str_replace($m_en, $m_pol, $str);
+        return str_replace($monthsEnglish, $monthsPolish, $str);
     }
 }
 
