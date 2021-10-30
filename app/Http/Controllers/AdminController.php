@@ -25,10 +25,10 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
-
     /**
      * Show the application dashboard.
-     *
+     * 
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(Request $request)
@@ -82,10 +82,11 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
-
     /**
-     * Show edit video form
-     *
+     * Show edit video form.
+     * 
+     * @param  int $id
+     * @param  \Illuminate\Http\Request  $request
      * @return void
      */
     public function edit($id, Request $request)
@@ -95,10 +96,11 @@ class AdminController extends Controller
         return view('admin.edit', ['video' => $video, 'categories' => $categories]);
     }
 
-
     /**
-     * Update video model
-     *
+     * Update video model.
+     * 
+     * @param  int $id
+     * @param  \App\Http\Requests\UpdateVideoReqeuest $request
      * @return void
      */
     public function update($id, UpdateVideoReqeuest $request)
@@ -168,10 +170,10 @@ class AdminController extends Controller
         return redirect()->route('admin.index');
     }
 
-
     /**
-     * Show add video form
-     *
+     * Add new video.
+     * 
+     * @param  \Illuminate\Http\Request  $request
      * @return void
      */
     public function add(Request $request)
@@ -195,10 +197,10 @@ class AdminController extends Controller
         return redirect('edit/' . $video->id);
     }
 
-
     /**
-     * Remove video form
+     * Remove video.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return void
      */
     public function remove(Request $request)

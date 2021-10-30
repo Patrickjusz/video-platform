@@ -10,6 +10,11 @@ class HomepageController extends Controller
 {
     private $cacheTime = 7200;
 
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     function __construct()
     {
         if (isDev()) {
@@ -17,6 +22,11 @@ class HomepageController extends Controller
         }
     }
 
+    /**
+     * Show homepage
+     * 
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $videos = Cache::remember('homepage_index', $this->cacheTime, function () {
@@ -32,7 +42,11 @@ class HomepageController extends Controller
         return view('homepage', ['videos' => $videos, 'latest_video' => $videos[0] ?? [], 'menu' => getNavigationElements()]);
     }
 
-
+    /**
+     * Show popular videos subpage
+     * 
+     * @return \Illuminate\Http\Response
+     */
     public function popular()
     {
         $videos = Cache::remember('homepage_popular', $this->cacheTime, function () {
@@ -51,13 +65,13 @@ class HomepageController extends Controller
         return view('homepage', ['videos' => $videos, 'latest_video' => $latestVideo, 'menu' => getNavigationElements()]);
     }
 
-
     /**
      * Show videos from category
-     *
-     * @return void
+     * 
+     * @param string $slug
+     * @return \Illuminate\Http\Response
      */
-    public function tag($slug, Request $request)
+    public function tag($slug)
     {
         $videos = Video::where('state', 'public')->with('tags')->whereHas('tags', function ($query)  use ($slug) {
             return $query->where('slug', '=', $slug);

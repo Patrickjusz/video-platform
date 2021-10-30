@@ -6,11 +6,22 @@ use Illuminate\Http\Request;
 
 class CKEditorController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
+    /**
+     * Upload image (CKEditor library).
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return string
+     */
     public function upload(Request $request)
     {
         if ($request->hasFile('upload')) {

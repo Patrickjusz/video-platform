@@ -7,6 +7,12 @@ use App\Models\Video;
 
 class SearchController extends Controller
 {
+    /**
+     * Search video feature (tmp endpoint)
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function search(Request $request)
     {
         $term = $request->term;
@@ -23,7 +29,6 @@ class SearchController extends Controller
             ->get();
 
         $results = array();
-
 
         foreach ($data as $key => $v) {
 
