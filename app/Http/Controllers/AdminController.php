@@ -9,7 +9,6 @@ use DataTables;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Artisan;
-use Carbon\Carbon;
 use App\Http\Requests\UpdateVideoReqeuest;
 use App\Services\Sitemap;
 
@@ -171,27 +170,11 @@ class AdminController extends Controller
     /**
      * Add new video.
      * 
-     * @param  \Illuminate\Http\Request  $request
      * @return void
      */
-    public function add(Request $request)
+    public function add()
     {
-        $video = Video::create([
-            'name' => '',
-            'filename' => '',
-            'thumb' => '',
-            'views_cache' => 0,
-            'slug' => '',
-            'description' => '',
-            'state' => 'private',
-            'seo_description' => '',
-            'duration' => '',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'elapsed_time' => 'Dzisiaj',
-            'views_cache_text' => '0 wyświetleń'
-        ]);
-
-        // $video = [];
+        $video = Video::createEmpty();
         return redirect('edit/' . $video->id);
     }
 

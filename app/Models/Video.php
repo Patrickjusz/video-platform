@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use getID3;
+use Carbon\Carbon;
 
 class Video extends Model
 {
@@ -91,5 +92,28 @@ class Video extends Model
             return $query->where('state', 'public')
                 ->orWhere('state', 'not_public');
         })->where('slug', $slug)->first();
+    }
+
+    /**
+     * Create new empty video in DB
+     * 
+     * @return \App\Models\Video;
+     */
+    public static function createEmpty(): Video
+    {
+        return self::create([
+            'name' => '',
+            'filename' => '',
+            'thumb' => '',
+            'views_cache' => 0,
+            'slug' => '',
+            'description' => '',
+            'state' => 'private',
+            'seo_description' => '',
+            'duration' => '',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'elapsed_time' => 'Dzisiaj',
+            'views_cache_text' => '0 wyświetleń'
+        ]);
     }
 }
