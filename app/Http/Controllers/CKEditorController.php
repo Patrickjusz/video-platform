@@ -26,7 +26,6 @@ class CKEditorController extends Controller
     public function upload(Request $request)
     {
         $response = UploadCKEditorFile::upload($request, 'upload/images');
-
         return response($response, 200, ['Content-Type => text/html']);
     }
 }
