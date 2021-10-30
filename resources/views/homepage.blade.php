@@ -57,7 +57,7 @@
                         <div class="stats">
                             <div class="row">
                                 <div class=" col-12 views">{{ $video->views_cache_text  ?? '0 wyświetleń' }}</div>
-                                <div class="col-12 date">Dodano {{ $video->eclapsed_time }}</div>
+                                <div class="col-12 date">Dodano {{ $video->elapsed_time }}</div>
                             </div>
                         </div>
                     </div>

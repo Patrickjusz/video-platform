@@ -12,7 +12,7 @@ class GenerateEclapsedTime extends Command
      *
      * @var string
      */
-    protected $signature = 'eclapsed_time:generate';
+    protected $signature = 'elapsed_time:generate';
 
     /**
      * The console command description.
@@ -38,7 +38,7 @@ class GenerateEclapsedTime extends Command
      */
     public function handle()
     {
-        $response = Http::get(route('eclapsed_time.generate'));
+        $response = Http::get(route('elapsed_time.generate'));
         return 0;
     }
 }

@@ -25,7 +25,7 @@
 
             <h1 class="title ">{{ $video->name }}</h1>
             <div class="stats">{{ $video->views_cache_text ?? '0 wyświetleń' }} •
-                {{ $video->eclapsed_time }} </div>
+                {{ $video->elapsed_time }} </div>
 
             <div class="description">
                 {!! $video->description !!}
@@ -61,7 +61,7 @@
                     <div class="col-7">
                         <p class="text text-wrap">{{ $similarVideo->name }}</p>
                         {{ $similarVideo->views_cache_text ?? '0 wyświetleń' }} <br>
-                        Dodano {{ $similarVideo->eclapsed_time }}
+                        Dodano {{ $similarVideo->elapsed_time }}
                     </div>
                 </a>
             @empty
