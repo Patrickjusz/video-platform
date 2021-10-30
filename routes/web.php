@@ -23,6 +23,7 @@ Route::get('/generateSitemap', function () {
     Sitemap::create();
 })->name('sitemap.generate');
 
+Route::get('/search', [App\Http\Controllers\SearchController::class, 'search'])->name('search');
 
 Route::get('/generateEclapsedTime', function () {
     $video = Video::where('state', '!=', 'delete')->orderByDesc('created_at')->get();

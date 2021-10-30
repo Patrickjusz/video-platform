@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Video;
+use App\Services\SearchVideo;
 
 class SearchController extends Controller
 {
@@ -15,26 +15,7 @@ class SearchController extends Controller
      */
     public function search(Request $request)
     {
-        $term = $request->term;
-        $data = Video::where('state', 'public')
-            ->where('slug', '!=', '')
-            ->where('filename', '!=', '')
-            ->where('thumb', '!=', '')
-            ->where(function ($query) use ($term) {
-                $query->where('name', 'LIKE', '%' . $term . '%')
-                    ->orWhere('description', 'LIKE', '%' . $term . '%');
-            })
-            ->take(10)
-            ->orderByDesc('views_cache')
-            ->get();
-
-        $results = array();
-
-        foreach ($data as $key => $v) {
-
-            $results[] = ['id' => $v->id, 'value' => $v->name, 'slug' => $v->slug];
-        }
-
+        $results = SearchVideo::search($request->term);
         return response()->json($results);
     }
 }
