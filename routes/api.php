@@ -24,8 +24,6 @@ Route::get('/videos', function () {
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-I 
-
 
 Route::get('/datatable', function () {
     $data = Video::select('*')->where('state', '!=', 'delete')->orderByDesc('created_at');
