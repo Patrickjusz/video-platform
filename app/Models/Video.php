@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use getID3;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Artisan;
+use App\Services\Sitemap;
 
 class Video extends Model
 {
@@ -15,22 +20,36 @@ class Video extends Model
     protected $fillable = ['name', 'filename', 'thumb', 'views_cache', 'slug', 'state', 'description', 'created_at', 'seo_description', 'duration', 'seo_keywords', 'elapsed_time', 'views_cache_text'];
     private static $cacheTime = 7200;
 
+    /**
+     * Get tags (belongsToMany)
+     */
     public function tags()
     {
         return $this->belongsToMany('App\Models\Tag')->withTimestamps();
     }
 
+    /**
+     * Get views (hasMany)
+     */
     public function views()
     {
         return $this->hasMany('App\Models\View');
     }
 
-    // TODO 
+    /**
+     * Get similar videos
+     * 
+     * @param  int $limit
+     * @return \App\Models\Video;
+     */
     public function getSimilarVideos(int $limit = 10)
     {
         return Video::inRandomOrder()->where('state', 'public')->limit($limit)->get();
     }
 
+    /**
+     * Get video details
+     */
     private function getDetails(string $videoPath)
     {
         $getID3 = new getID3;
@@ -39,7 +58,12 @@ class Video extends Model
         return $fileInfo;
     }
 
-    public function getDuration()
+    /**
+     * Get video duration
+     * 
+     * @return string;
+     */
+    public function getDuration(): string
     {
         return ($this->getDetails('storage/' . $this->filename)['playtime_string']) ?? '';
     }
@@ -120,5 +144,76 @@ class Video extends Model
         $videos = $enableCache ? Cache::remember($cacheName, self::$cacheTime, $videosCallback) : $videosCallback();
 
         return $videos;
+    }
+
+    /**
+     * Edit video record from the DB
+     * 
+     * @param int $id
+     * @param \Illuminate\Http\Request $request
+     * @return bool;
+     */
+    public static function edit(int $id, Request $request): bool
+    {
+        $video = Video::findOrFail($id);
+        $input = $request->all();
+        $videoFile = $request->file('video_file') ?? false;
+        $thumbFile = $request->file('thumb_file') ?? false;
+        $toRemove = [];
+
+        $seo_description = trim($request->input('seo_description') ?? '');
+        if (empty($seo_description)) {
+            $input['seo_description'] = htmlToString($request->input('description') ?? $video->description ?? '');
+        }
+
+        if (!empty($input['seo_keywords'])) {
+            $input['seo_keywords']  = trim($input['seo_keywords']);
+        }
+
+        if (!empty($videoFile)) {
+            ini_set('max_execution_time', 7200); //2h
+            $videoNewPath =  $videoFile->store('videos', 'public');
+
+            if ($videoNewPath) {
+                $input['filename'] = $videoNewPath;
+            }
+
+            !empty($video->filename) ? $toRemove[] = $video->filename : false;
+        }
+
+        if (!empty($thumbFile)) {
+            $thumbNewPath =  $thumbFile->store('thumbs', 'public');
+
+            if ($thumbNewPath) {
+                $input['thumb'] = $thumbNewPath;
+            }
+
+            !empty($video->thumb) ? $toRemove[] = $video->thumb : false;
+        }
+
+        $video->elapsed_time = timeElapsedString($video->created_at);
+
+        if ($video->update($input)) {
+            foreach ($toRemove as $file) {
+                Storage::delete('public/' .  $file);
+            }
+
+            $videoDuration = $video->getDuration();
+            if (!empty($videoDuration)) {
+                $video->duration = $videoDuration;
+                $video->save();
+            }
+
+            $tagsIds = $request->input('TagsList');
+            $video->tags()->sync($tagsIds);
+
+            Session::flash('status', 'Wideo zostało zaktualizowane');
+            Sitemap::create();
+            Artisan::call('cache:clear');
+
+            return true;
+        }
+
+        return false;
     }
 }
