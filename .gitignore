@@ -13,16 +13,9 @@ npm-debug.log
 yarn-error.log
 public/wideos
 public/upload
-public/css
 public/.htaccess
 public/upload/images
 
 #Webpack CI/CD abuddy.works
-public/css/admin/admin.app.css 
-public/css/admin/admin.app.css.map   
-public/css/app.css 
-public/css/app.css.map
-public/js/admin/admin.app.js 
-public/js/admin/admin.app.js.map  
-public/js/app.js 
-public/js/app.js.map 
+/public/css
+/public/js
