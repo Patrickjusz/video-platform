@@ -82,7 +82,7 @@ class Video extends Model
      * @param  string $slug
      * @return \App\Models\Video;
      */
-    public static function getVisibleVideoBySlug(string $slug): Video
+    public static function getVisibleVideoBySlug(string $slug)
     {
         return self::where(function ($query) {
             return $query->where('state', 'public')
