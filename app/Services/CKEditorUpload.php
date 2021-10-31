@@ -10,7 +10,7 @@ interface Upload
     public static function upload(Request $request, string $destinationPath): string;
 }
 
-class UploadCKEditorFile implements Upload
+class CKEditorUpload implements Upload
 {
     /**
      * Upload file from CKEditor 

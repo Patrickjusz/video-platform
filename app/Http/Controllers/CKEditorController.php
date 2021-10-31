@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\UploadCKEditorFile;
+use App\Services\CKEditorUpload;
 
 class CKEditorController extends Controller
 {
@@ -25,7 +25,7 @@ class CKEditorController extends Controller
      */
     public function upload(Request $request)
     {
-        $response = UploadCKEditorFile::upload($request, 'upload/images');
+        $response = CKEditorUpload::upload($request, 'upload/images');
         return response($response, 200, ['Content-Type => text/html']);
     }
 }
