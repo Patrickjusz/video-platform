@@ -32,6 +32,10 @@
     <link href="{{ asset('css/admin/admin.app.css') }}" rel="stylesheet">
 
     <script>
+        @if (Auth::check())
+            const API_KEY = "{{ getApiKey() }}";
+        @endif
+
         function removeVideo(id) {
             if (confirm('Czy chcesz usunąć film o id: ' + id + '?')) {
                 $.ajax({
@@ -129,7 +133,7 @@
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                 document.getElementById('logout-form').submit();">
+                                                                                                                                                                             document.getElementById('logout-form').submit();">
                                         {{ __('form_login.logout') }}
                                     </a>
 
