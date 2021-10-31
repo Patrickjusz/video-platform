@@ -50,6 +50,12 @@ To create the symbolic link, you may use the storage:link Artisan command:
 php artisan storage:link
 ```
 
+Generate a new API key
+```
+php artisan apikey:generate dashboard
+php artisan apikey:activate dashboard
+```
+
 Start the local development server
 ```
 php artisan serve
