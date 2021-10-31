@@ -9,6 +9,8 @@ use App\Http\Requests\UpdateTagRequest;
 
 class TagController extends Controller
 {
+    use \App\Traits\MiddlewareToolsTrait;
+    
     /**
      * Create a new controller instance.
      *

@@ -8,6 +8,8 @@ use App\Services\VideoViews;
 
 class VideoController extends Controller
 {
+    use \App\Traits\MiddlewareToolsTrait;
+    
     /**
      * Show single video subpage
      *

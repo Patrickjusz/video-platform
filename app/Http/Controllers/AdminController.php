@@ -9,6 +9,8 @@ use App\Http\Requests\UpdateVideoReqeuest;
 
 class AdminController extends Controller
 {
+    use \App\Traits\MiddlewareToolsTrait;
+
     /**
      * Create a new controller instance.
      *

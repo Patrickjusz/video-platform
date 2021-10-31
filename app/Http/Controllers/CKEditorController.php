@@ -7,6 +7,8 @@ use App\Services\CKEditorUpload;
 
 class CKEditorController extends Controller
 {
+    use \App\Traits\MiddlewareToolsTrait;
+    
     /**
      * Create a new controller instance.
      *

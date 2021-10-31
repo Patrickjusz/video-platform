@@ -6,6 +6,8 @@ use App\Models\Video;
 
 class HomepageController extends Controller
 {
+    use \App\Traits\MiddlewareToolsTrait;
+    
     /**
      * Show homepage
      * 

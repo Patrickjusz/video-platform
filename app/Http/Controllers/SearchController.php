@@ -7,6 +7,8 @@ use App\Services\SearchVideo;
 
 class SearchController extends Controller
 {
+    use \App\Traits\MiddlewareToolsTrait;
+    
     /**
      * Search video feature (tmp endpoint)
      * 
