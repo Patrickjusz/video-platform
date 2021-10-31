@@ -13,6 +13,7 @@ class Video extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'filename', 'thumb', 'views_cache', 'slug', 'state', 'description', 'created_at', 'seo_description', 'duration', 'seo_keywords', 'elapsed_time', 'views_cache_text'];
+    private static $cacheTime = 7200;
 
     public function tags()
     {
@@ -88,8 +89,6 @@ class Video extends Model
         ]);
     }
 
-    private static $cacheTime = 7200;
-
     /**
      * Get video by state column
      * 
@@ -105,11 +104,7 @@ class Video extends Model
         $order = $desc ? 'DESC' : "ASC";
         $cacheName = $state . $orderByColumnName . $order . $limit;
 
-        if (!$enableCache) {
-            Cache::forget($cacheName);
-        }
-
-        $videos = Cache::remember($cacheName, self::$cacheTime, function () use ($state, $orderByColumnName, $order, $limit) {
+        $videosCallback = function () use ($state, $orderByColumnName, $order, $limit) {
             $tmpVideos = self::where('state', $state)
                 ->where('slug', '!=', '')
                 ->where('filename', '!=', '')
@@ -119,9 +114,10 @@ class Video extends Model
             if ($limit > 0) {
                 $tmpVideos->limit($limit);
             }
-
             return $tmpVideos->get();
-        });
+        };
+
+        $videos = $enableCache ? Cache::remember($cacheName, self::$cacheTime, $videosCallback) : $videosCallback();
 
         return $videos;
     }
