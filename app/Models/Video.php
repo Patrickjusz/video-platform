@@ -18,45 +18,16 @@ class Video extends Model
         return $this->belongsToMany('App\Models\Tag')->withTimestamps();
     }
 
-
     public function views()
     {
         return $this->hasMany('App\Models\View');
     }
 
-
     // TODO 
     public function getSimilarVideos(int $limit = 10)
     {
-        // $videoId = $this->getKey('id');
-
-        /**
-         * Alghoritm:
-         * -Get tags
-         * -Get similar video by tags
-         * -Order by views,created_at
-         * -if ($rows<$limit) { //get next similar videos }
-         */
-
-        // $tags = $this->tags;
-
-        // foreach ($tags as $tag) {
-        //     $tag = Tag::find($tag->id);
-
-        //     if (!empty($tag->videos))
-        //     {
-        //          $similarVideos->merge($tag->videos);
-        //     }
-        // }
-
-        // dd($similarVideos);
-        // $vid = DB::select('SELECT video_id FROM tag_video WHERE tag_id = 1 LIMIT 10');
-        // return false;
-
-
         return Video::inRandomOrder()->where('state', 'public')->limit($limit)->get();
     }
-
 
     private function getDetails(string $videoPath)
     {
@@ -65,7 +36,6 @@ class Video extends Model
 
         return $fileInfo;
     }
-
 
     public function getDuration()
     {
@@ -115,5 +85,30 @@ class Video extends Model
             'elapsed_time' => 'Dzisiaj',
             'views_cache_text' => '0 wyświetleń'
         ]);
+    }
+
+    /**
+     * Get video by state column
+     * 
+     * @param string $state Available: 'public','not_public','private','delete'
+     * @param string $orderByColumnName
+     * @param bool $desc
+     * @param int $limit
+     * @return \Illuminate\Database\Eloquent\Collection;
+     */
+    public static function getVideosByState(string $state, string $orderByColumnName = 'id', bool $desc = false, int $limit = 0): Collection
+    {
+        $order = $desc ? 'DESC' : "ASC";
+        $videos = self::where('state', $state)
+            ->where('slug', '!=', '')
+            ->where('filename', '!=', '')
+            ->where('thumb', '!=', '')
+            ->orderBy($orderByColumnName, $order);
+
+        if ($limit > 0) {
+            $videos->limit($limit);
+        }
+
+        return $videos->get();
     }
 }
