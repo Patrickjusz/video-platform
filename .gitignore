@@ -21,3 +21,4 @@ yarn-error.log
 /public/css
 /public/js
 !/public/js/ckeditor/
+public/mix-manifest.json
