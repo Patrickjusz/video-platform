@@ -45,7 +45,7 @@ class TagController extends Controller
             'slug' => '',
             'state' => 'public',
         ]);
-
+        // $video = [];
         return redirect('edit_tags/' . $video->id);
     }
 
