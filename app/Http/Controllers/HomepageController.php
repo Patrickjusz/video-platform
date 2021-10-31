@@ -6,20 +6,6 @@ use App\Models\Video;
 
 class HomepageController extends Controller
 {
-    private $cacheTime = 7200;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    function __construct()
-    {
-        if (isDev()) {
-            $cacheTime = 0;
-        }
-    }
-
     /**
      * Show homepage
      * 
