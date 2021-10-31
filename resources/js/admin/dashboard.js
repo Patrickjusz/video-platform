@@ -1,10 +1,16 @@
-const ADMIN_PATH = "admin";
+const ADMIN_PATH = "api/datatable";
 
 $(function() {
     var table = $(".data-table-video").DataTable({
         processing: true,
         serverSide: true,
-        ajax: ADMIN_PATH,
+        ajax: {
+            url: ADMIN_PATH,
+            type: "GET",
+            beforeSend: function(request) {
+                request.setRequestHeader("X-Authorization", API_KEY);
+            }
+        },
         oLanguage: {
             sUrl: "lang/datatable-polish.json"
         },
