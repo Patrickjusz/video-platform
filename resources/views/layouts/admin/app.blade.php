@@ -81,9 +81,11 @@
                 <a class="navbar-brand" href="{{ route('admin.index') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <a href="{{ route('video.index') }}" class="btn btn-primary">
-                    <i class="bi bi-eye"></i>
-                </a>
+                @if (Auth::check())
+                    <a href="{{ route('video.index') }}" class="btn btn-primary">
+                        <i class="bi bi-eye"></i>
+                    </a>
+                @endif
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
@@ -133,7 +135,7 @@
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                             document.getElementById('logout-form').submit();">
+                                                                                                                                                                                 document.getElementById('logout-form').submit();">
                                         {{ __('form_login.logout') }}
                                     </a>
 
