@@ -96,7 +96,7 @@ class Video extends Model
      * @param int $limit
      * @return \Illuminate\Database\Eloquent\Collection;
      */
-    public static function getVideosByState(string $state, string $orderByColumnName = 'id', bool $desc = false, int $limit = 0): Collection
+    public static function getVideosByState(string $state, string $orderByColumnName = 'id', bool $desc = false, int $limit = 0)
     {
         $order = $desc ? 'DESC' : "ASC";
         $videos = self::where('state', $state)
