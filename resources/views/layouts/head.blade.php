@@ -71,4 +71,5 @@
     <meta name="msapplication-TileColor" content="#2b5797" />
     <meta name="theme-color" content="#357ebf" />
 
+    <!-- WEB_PAGE_SUCCESS -->
 @endsection
