@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 @section('content')
-    <script src="{{ url('js/admin/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ url('js_lib/admin/ckeditor/ckeditor.js') }}"></script>
     <script>
         window.onload = function() {
             CKEDITOR.replace('description', {
