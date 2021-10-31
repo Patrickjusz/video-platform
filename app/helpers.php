@@ -189,3 +189,15 @@ if (!function_exists('htmlToString')) {
         return substr(trim(str_replace("&nbsp;", ' ', preg_replace("/\r|\n/", "", strip_tags($html ?? '')))), 0, 157) . '...';
     }
 }
+
+if (!function_exists('getApiKey')) {
+    /**
+     * Get API key
+     * 
+     * @return string
+     */
+    function getApiKey(): string
+    {
+        return env("API_KEY");
+    }
+}
