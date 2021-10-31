@@ -42,7 +42,7 @@ class HomepageController extends Controller
      */
     public function popular()
     {
-        $videos = Cache::remember('homepage_index', $this->cacheTime, function () {
+        $videos = Cache::remember('homepage_popular', $this->cacheTime, function () {
             return Video::getVideosByState('public', 'views_cache', true);
         });
 
