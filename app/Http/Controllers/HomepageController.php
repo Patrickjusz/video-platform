@@ -29,7 +29,7 @@ class HomepageController extends Controller
     public function index()
     {
         $videos = Cache::remember('homepage_index', $this->cacheTime, function () {
-            return Video::getVideosByState('public', 'name', true);
+            return Video::getVideosByState('public', 'created_at', true);
         });
 
         return view('homepage', ['videos' => $videos, 'latest_video' => $videos[0] ?? [], 'menu' => getNavigationElements()]);
