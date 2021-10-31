@@ -18,7 +18,7 @@ use App\Http\Resources\VideosResource;
 
 Route::get('/videos', function () {
     return VideosResource::collection(Video::where('state', 'public')->get());
-});
+})->middleware('auth.apikey');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
