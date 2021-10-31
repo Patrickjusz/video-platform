@@ -53,7 +53,7 @@ class AdminController extends Controller
      */
     public function update($id, UpdateVideoReqeuest $request)
     {
-        Video::edit($id, $request);
+        Video::updateVideo($id, $request);
         return redirect()->route('admin.index');
     }
 

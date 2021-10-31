@@ -147,13 +147,13 @@ class Video extends Model
     }
 
     /**
-     * Edit video record from the DB
+     * Update video record from the DB
      * 
      * @param int $id
      * @param \Illuminate\Http\Request $request
      * @return bool;
      */
-    public static function edit(int $id, Request $request): bool
+    public static function updateVideo(int $id, Request $request): bool
     {
         $video = Video::findOrFail($id);
         $input = $request->all();
