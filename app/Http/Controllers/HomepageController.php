@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Video;
-use Illuminate\Support\Facades\Cache;
 
 class HomepageController extends Controller
 {
@@ -28,9 +27,7 @@ class HomepageController extends Controller
      */
     public function index()
     {
-        $videos = Cache::remember('homepage_index', $this->cacheTime, function () {
-            return Video::getVideosByState('public', 'created_at', true);
-        });
+        $videos = Video::getVideosByState('public', 'created_at', true);
 
         return view('homepage', ['videos' => $videos, 'latest_video' => $videos[0] ?? [], 'menu' => getNavigationElements()]);
     }
@@ -42,13 +39,8 @@ class HomepageController extends Controller
      */
     public function popular()
     {
-        $videos = Cache::remember('homepage_popular', $this->cacheTime, function () {
-            return Video::getVideosByState('public', 'views_cache', true);
-        });
-
-        $latestVideo  = Cache::remember('homepage_popular_latest_video', $this->cacheTime, function () {
-            return Video::getVideosByState('public', 'created_at', true, 1)[0] ?? [];
-        });
+        $videos = Video::getVideosByState('public', 'views_cache', true);
+        $latestVideo  = Video::getVideosByState('public', 'created_at', true, 1)[0] ?? [];
 
         return view('homepage', ['videos' => $videos, 'latest_video' => $latestVideo, 'menu' => getNavigationElements()]);
     }

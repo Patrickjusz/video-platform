@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use getID3;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Cache;
 
 class Video extends Model
 {
@@ -87,6 +88,8 @@ class Video extends Model
         ]);
     }
 
+    private static $cacheTime = 7200;
+
     /**
      * Get video by state column
      * 
@@ -94,21 +97,32 @@ class Video extends Model
      * @param string $orderByColumnName
      * @param bool $desc
      * @param int $limit
+     * @param bool $enableCache
      * @return \Illuminate\Database\Eloquent\Collection;
      */
-    public static function getVideosByState(string $state, string $orderByColumnName = 'id', bool $desc = false, int $limit = 0)
+    public static function getVideosByState(string $state, string $orderByColumnName = 'id', bool $desc = false, int $limit = 0, bool $enableCache = true)
     {
         $order = $desc ? 'DESC' : "ASC";
-        $videos = self::where('state', $state)
-            ->where('slug', '!=', '')
-            ->where('filename', '!=', '')
-            ->where('thumb', '!=', '')
-            ->orderBy($orderByColumnName, $order);
+        $cacheName = $state . $orderByColumnName . $order . $limit;
 
-        if ($limit > 0) {
-            $videos->limit($limit);
+        if (!$enableCache) {
+            Cache::forget($cacheName);
         }
 
-        return $videos->get();
+        $videos = Cache::remember($cacheName, self::$cacheTime, function () use ($state, $orderByColumnName, $order, $limit) {
+            $tmpVideos = self::where('state', $state)
+                ->where('slug', '!=', '')
+                ->where('filename', '!=', '')
+                ->where('thumb', '!=', '')
+                ->orderBy($orderByColumnName, $order);
+
+            if ($limit > 0) {
+                $tmpVideos->limit($limit);
+            }
+
+            return $tmpVideos->get();
+        });
+
+        return $videos;
     }
 }
