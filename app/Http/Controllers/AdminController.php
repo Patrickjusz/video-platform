@@ -27,6 +27,7 @@ class AdminController extends Controller
      */
     public function index(Request $request)
     {
+        // The logic is in API endpoint and Javascript (Datatables and Ajax) 
         return view('admin.index');
     }
 
