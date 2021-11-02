@@ -12,10 +12,12 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Artisan;
 use App\Services\Sitemap;
+use Laravelista\Comments\Commentable;
+
 
 class Video extends Model
 {
-    use HasFactory;
+    use HasFactory, Commentable;
 
     protected $fillable = ['name', 'filename', 'thumb', 'views_cache', 'slug', 'state', 'description', 'created_at', 'seo_description', 'duration', 'seo_keywords', 'elapsed_time', 'views_cache_text'];
     private static $cacheTime = 7200;
