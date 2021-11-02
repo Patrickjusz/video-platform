@@ -41,6 +41,7 @@
             </div>
 
             <div id="comments">
+                <h2>Komentarze</h2>
                 @if (app('request')->new_comment == 1)
                     <div class="alert alert-success">Dodano nowy komentarz i oczekuje on na akceptacje przez administratora.</div>
                 @endif
