@@ -39,6 +39,14 @@
 
                 @endforelse
             </div>
+
+            <div id="comments">
+                @if (app('request')->new_comment == 1)
+                    <div class="alert alert-success">Dodano nowy komentarz i oczekuje on na akceptacje przez administratora.</div>
+                @endif
+                @comments(['model' => $video, 'approved' => true, 'perPage' => 2, 'maxIndentationLevel' => 1])
+            </div>
+
             @auth
                 <div>
                     <br>
@@ -67,7 +75,6 @@
             @empty
                 brak
             @endforelse
-
         </aside>
     </main>
 

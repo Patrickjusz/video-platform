@@ -58,7 +58,8 @@ Route::get('/', [HomepageController::class, 'index'])->name('video.index');
 Route::get('/popularne', [HomepageController::class, 'popular'])->name('video.popular');
 Route::get('/kategoria/{slug}', [HomepageController::class, 'tag'])
     ->where('tag', '[A-Za-z0-9\-]+');
-Route::get('/{slug}', [VideoController::class, 'index'])
+Route::get('/{slug}{new_comment?}', [VideoController::class, 'index'])
     ->where('slug', '[A-Za-z0-9\-]+');
+    
 
 Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.image-upload');
