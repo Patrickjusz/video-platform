@@ -18,7 +18,7 @@ yarn-error.log
 /public/upload/images
 
 #Webpack CI/CD abuddy.works
-# /public/css
-# /public/js
+/public/css
+/public/js
 !/public/js/ckeditor/
 public/mix-manifest.json
