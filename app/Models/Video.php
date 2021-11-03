@@ -218,4 +218,20 @@ class Video extends Model
 
         return false;
     }
+
+    /**
+     * Get the number of comments 
+     *
+     * @param  bool $onlyApproved count only accepted comments
+     * @return int
+     */
+    public function getNumberOfComments(bool $onlyApproved = true): int
+    {
+        $video = $this->comments();
+        if ($onlyApproved) {
+            $video->where('approved', 1);
+        }
+
+        return $video->count() ?? 0;
+    }
 }
