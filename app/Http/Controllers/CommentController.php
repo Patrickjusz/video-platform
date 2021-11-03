@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
 use Laravelista\Comments\CommentControllerInterface;
 use Laravelista\Comments\Comment;
+use Illuminate\Support\Facades\Event;
+use App\Events\AddComment;
 
 /**
  * I move class code form \vendor\laravelista\comments\src\CommentController.php
@@ -72,7 +74,10 @@ class CommentController extends Controller implements CommentControllerInterface
         $comment->commentable()->associate($model);
         $comment->comment = $request->message;
         $comment->approved = !Config::get('comments.approval_required');
-        $comment->save();
+
+        if ($comment->save()) {
+            Event::dispatch(new AddComment($comment->guest_name,  $comment->guest_email, $request->message, URL::previous()));
+        }
 
         return Redirect::to(URL::previous() . '?new_comment=1&#comment-' . $comment->getKey());
     }
