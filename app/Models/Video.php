@@ -227,11 +227,11 @@ class Video extends Model
      */
     public function getNumberOfComments(bool $onlyApproved = true): int
     {
-        $video = $this->comments();
+        $comments = $this->comments();
         if ($onlyApproved) {
-            $video->where('approved', 1);
+            $comments->where('approved', 1);
         }
 
-        return $video->count() ?? 0;
+        return $comments->count() ?? 0;
     }
 }
