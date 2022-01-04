@@ -109,6 +109,10 @@
                 background-repeat: no-repeat;
                 background-size: cover;
 
+                @include media(">=xxl") {
+                    min-height: 175px;
+                }
+
                 @include media("<=md") {
                     min-height: 190px;
                 }
